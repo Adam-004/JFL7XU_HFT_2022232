@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace JFL7XU_HFT_2022232.Repository.Database
 {
-    class SpacecraftOwnershipDBContext : DbContext
+    public class SpacecraftOwnershipDBContext : DbContext
     {
         public DbSet<Owner> Owners { get; set; }
         public DbSet<Starship> Starships { get; set; }
