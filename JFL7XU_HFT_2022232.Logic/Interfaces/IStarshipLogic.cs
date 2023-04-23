@@ -12,7 +12,7 @@ namespace JFL7XU_HFT_2022232.Logic.Interfaces
         void Create(Starship item);
         void Update(Starship item);
         Starship Read(int id);
-        IQueryable<Starship> ReadAll();
+        IEnumerable<Starship> ReadAll();
         void Delete(int id);
     }
 }

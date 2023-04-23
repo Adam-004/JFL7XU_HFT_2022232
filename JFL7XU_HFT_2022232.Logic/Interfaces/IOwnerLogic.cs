@@ -12,7 +12,7 @@ namespace JFL7XU_HFT_2022232.Logic.Interfaces
         void Create(Owner item);
         void Update(Owner item);
         Owner Read(int id);
-        IQueryable<Owner> ReadAll();
+        IEnumerable<Owner> ReadAll();
         void Delete(int id);
     }
 }

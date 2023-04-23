@@ -13,7 +13,7 @@ namespace JFL7XU_HFT_2022232.Logic.Interfaces
         void Create(Hangar item);
         void Update(Hangar item);
         Hangar Read(int id);
-        IQueryable<Hangar> ReadAll();
+        IEnumerable<Hangar> ReadAll();
         void Delete(int id);
     }
 }
