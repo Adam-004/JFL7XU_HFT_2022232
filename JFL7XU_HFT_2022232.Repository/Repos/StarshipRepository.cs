@@ -1,4 +1,7 @@
-﻿using System;
+﻿using JFL7XU_HFT_2022232.Models;
+using JFL7XU_HFT_2022232.Repository.Database;
+using JFL7XU_HFT_2022232.Repository.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +9,23 @@ using System.Threading.Tasks;
 
 namespace JFL7XU_HFT_2022232.Repository.Repos
 {
-    internal class StarshipRepository
+    class StarshipRepository : GenericRepository<Starship>, IRepository<Starship>
     {
+        public StarshipRepository(SpacecraftOwnershipDBContext ctx) : base(ctx)
+        {
+        }
+        public override Starship Read(int id)
+        {
+            return ctx.Starships.FirstOrDefault(s => s.ID == id);
+        }
+        public override void Update(Starship item)
+        {
+            var old = Read(item.ID);
+            foreach (var prop in old.GetType().GetProperties())
+            {
+                prop.SetValue(old, prop.GetValue(item));
+            }
+            ctx.SaveChanges();
+        }
     }
 }
