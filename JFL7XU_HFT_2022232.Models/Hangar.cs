@@ -18,7 +18,7 @@ namespace JFL7XU_HFT_2022232.Models
         [StringLength(100)]
         public string Location { get; set; }
         public int OwnerID { get; set; }
-
+        public virtual Owner Owner { get; set; }
         public Hangar()
         {
         }
