@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace JFL7XU_HFT_2022232.Repository.Repos
 {
-    class HangarRepository : GenericRepository<Hangar>,IRepository<Hangar>
+    public class HangarRepository : GenericRepository<Hangar>,IRepository<Hangar>
     {
         public HangarRepository(SpacecraftOwnershipDBContext ctx) : base(ctx)
         {

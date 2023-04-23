@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace JFL7XU_HFT_2022232.Repository.Repos
 {
-    class StarshipRepository : GenericRepository<Starship>, IRepository<Starship>
+    public class StarshipRepository : GenericRepository<Starship>, IRepository<Starship>
     {
         public StarshipRepository(SpacecraftOwnershipDBContext ctx) : base(ctx)
         {

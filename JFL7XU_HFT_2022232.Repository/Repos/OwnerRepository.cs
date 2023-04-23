@@ -9,7 +9,7 @@ using JFL7XU_HFT_2022232.Repository.Database;
 
 namespace JFL7XU_HFT_2022232.Repository.Repos
 {
-    class OwnerRepository : GenericRepository<Owner>, IRepository<Owner>
+    public class OwnerRepository : GenericRepository<Owner>, IRepository<Owner>
     {
         public OwnerRepository(SpacecraftOwnershipDBContext ctx) : base(ctx)
         {
