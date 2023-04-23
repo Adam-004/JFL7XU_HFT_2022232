@@ -21,25 +21,23 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
         {
             repo.Create(item);
         }
-
         public void Delete(int id)
         {
             repo.Delete(id);
         }
-
         public Starship Read(int id)
         {
             return repo.Read(id);
         }
-
-        public IQueryable<Starship> ReadAll()
+        public IEnumerable<Starship> ReadAll()
         {
             return repo.ReadAll();
         }
-
         public void Update(Starship item)
         {
             repo.Update(item);
         }
+        //Non-CRUDs
+
     }
 }

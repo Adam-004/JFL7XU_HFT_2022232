@@ -21,27 +21,28 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
         {
             repo.Create(item);
         }
-
         public void Delete(int id)
         {
             repo.Delete(id);
         }
-
         public Hangar Read(int id)
         {
             return repo.Read(id);
         }
-
-        public IQueryable<Hangar> ReadAll()
+        public IEnumerable<Hangar> ReadAll()
         {
             return repo.ReadAll();
         }
-
         public void Update(Hangar item)
         {
             repo.Update(item);
         }
 
+        //Non-CRUDs
+        public IEnumerable<Hangar> ListHangars_WithShipsMoreThan(int quantity)
+        {
+            return repo.ReadAll().Where(h => h.Owner.Ships.Count > quantity);
+        }
 
     }
 }
