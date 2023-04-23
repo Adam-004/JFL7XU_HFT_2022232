@@ -26,7 +26,7 @@ namespace JFL7XU_HFT_2022232.Models
         }
         public Owner(int id, string name, int age)
         {
-            Id = id;
+            ID = id;
             Name = name;
             Age = age;
         }
