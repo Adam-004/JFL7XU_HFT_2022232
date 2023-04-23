@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JFL7XU_HFT_2022232.Repository.Interfaces
 {
-    interface IRepository<T> where T : class
+    public interface IRepository<T> where T : class
     {
         //CRUD
         void Create(T item);
