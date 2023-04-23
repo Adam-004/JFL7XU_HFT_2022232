@@ -60,12 +60,47 @@ namespace JFL7XU_HFT_2022232.Repository.Database
                 new Owner(1,"Yoda mester",507),
                 new Owner(2,"Din Djarin",48),
                 new Owner(3,"Bahets",21),
-                new Owner(4,"Din Djarin",32),
-                new Owner(5,"Din Djarin",20),
-                new Owner(6,"Din Djarin",18),
-                new Owner(7,"Din Djarin",55),
-                new Owner(8,"Din Djarin",78),
+                new Owner(4,"Béla",32),
+                new Owner(5,"Feri",20),
+                new Owner(6,"Anakin Skywalker",18),
+                new Owner(7,"Grogu",55),
+                new Owner(8,"Owen Lars",78)
             }) ;
+
+            //Transport = 1,
+            //Fregatte = 2,
+            //Cruiser = 3,
+            //Fighter = 4
+
+            modelBuilder.Entity<Starship>().HasData(new Starship[]
+            {
+                new Starship(1,"Borotvaél",100,20271,3,2),
+                new Starship(2,"Nabui Csillagvadász",60,20150,4,2),
+                new Starship(3,"Scorpion",65,2970,4,3),
+                new Starship(4,"890 Jump",270,2998,4,3),
+                new Starship(5,"Idris",405,2870,2,3),
+                new Starship(6,"LAAT",140,20198,3,1),
+                new Starship(7,"SnowSpeeder",20,2020,1,4),
+                new Starship(8,"SnowSpeeder II.",18,2023,1,5),
+                new Starship(9,"T3-C Shuttle",20,2020,1,5),
+                new Starship(10,"Pod Racer",20,20120,1,6),
+                new Starship(11,"Star Skiff",20,20102,4,6),
+                new Starship(12,"Tranporter SM-11",35,20120,1,7),
+                new Starship(13,"IB-37",40,20229,4,7),
+                new Starship(14,"Desert Skiff",20,20101,1,8),
+            });
+
+            modelBuilder.Entity<Hangar>().HasData(new Hangar[]
+            {
+                new Hangar(1,"Trade leage platform","Nabu",1),
+                new Hangar(2,"Imperial Landing Pod","Nevarró",2),
+                new Hangar(3,"Self-Land","Orison",3),
+                new Hangar(4,"Kenedy Launch Station","Houston",4),
+                new Hangar(5,"Falcon Launch Station","Cape Canaveral",5),
+                new Hangar(6,"Desert Launch Pod","Tatuin",6),
+                new Hangar(7,"Rocky's Station","Nevarró",7),
+                new Hangar(8,"Dock 07","Tatuin",8)
+            });
         }
     }
 }   
