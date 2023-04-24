@@ -118,5 +118,18 @@ namespace JFL7XU_HFT_2022232.Test.LogicTest
             //ASSERT
             moqHangarRepo.Verify(r => r.Update(hangar), Times.Once);
         }
+        [Test]
+        public void UpdateHangarTest_InCorrect()
+        {
+            var hangar = new Hangar(5, "Falcon Launch Station", "Cape Canaveral", 5);
+            //ACT
+            try
+            {
+                logic.Update(hangar);
+            }
+            catch{}
+            //ASSERT
+            moqHangarRepo.Verify(r => r.Update(hangar), Times.Never);
+        }
     }
 }
