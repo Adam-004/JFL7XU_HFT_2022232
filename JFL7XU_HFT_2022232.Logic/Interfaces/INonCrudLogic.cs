@@ -15,5 +15,6 @@ namespace JFL7XU_HFT_2022232.Logic.Interfaces
         IEnumerable<Owner> ListOwners_OlderThan(int year);
         IEnumerable<Owner> ListOwners_YoungerThan(int year);
         IEnumerable<Owner> ListOwners_YoungerAndHasMoreShipsThan(int year, int quantity);
+        IEnumerable<OwnershipStatistics> ListStatistics();
     }
 }
