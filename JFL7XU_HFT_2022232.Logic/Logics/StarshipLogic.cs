@@ -43,7 +43,7 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
             var ship = repo.Read(id);
             if (ship is null)
             {
-                throw new NoHangarFoundWithGivenIdException();
+                throw new NoStarshipFoundWithGivenIdException();
             }
             return ship;
         }
