@@ -18,23 +18,23 @@ namespace JFL7XU_HFT_2022232.Test.LogicTest
         public class HangarLogicTester
         {
             OwnerLogic logic;
-            Mock<IRepository<Owner>> moqHangarRepo;
+            Mock<IRepository<Owner>> moqOwnerRepo;
             [SetUp]
             public void Init()
             {
-                moqHangarRepo = new();
-                moqHangarRepo.Setup(mhr => mhr.ReadAll()).Returns(new List<Owner>()
+                moqOwnerRepo = new();
+                moqOwnerRepo.Setup(mhr => mhr.ReadAll()).Returns(new List<Owner>()
                 {
                     new Owner(1,"Yoda mester",507),
                     new Owner(2,"Din Djarin",48),
                     new Owner(3,"Bahets",21),
                     new Owner(4,"Béla",32)
                 }.AsQueryable());
-                moqHangarRepo.Setup(mhr => mhr.Read(1)).Returns(new Owner(1, "Yoda mester", 507));
-                moqHangarRepo.Setup(mhr => mhr.Read(2)).Returns(new Owner(2, "Din Djarin", 48));
-                moqHangarRepo.Setup(mhr => mhr.Read(3)).Returns(new Owner(3, "Bahets", 21));
-                moqHangarRepo.Setup(mhr => mhr.Read(4)).Returns(new Owner(4, "Béla", 32));
-                logic = new OwnerLogic(moqHangarRepo.Object);
+                moqOwnerRepo.Setup(mhr => mhr.Read(1)).Returns(new Owner(1, "Yoda mester", 507));
+                moqOwnerRepo.Setup(mhr => mhr.Read(2)).Returns(new Owner(2, "Din Djarin", 48));
+                moqOwnerRepo.Setup(mhr => mhr.Read(3)).Returns(new Owner(3, "Bahets", 21));
+                moqOwnerRepo.Setup(mhr => mhr.Read(4)).Returns(new Owner(4, "Béla", 32));
+                logic = new OwnerLogic(moqOwnerRepo.Object);
             }
 
             //Create tests
@@ -46,7 +46,7 @@ namespace JFL7XU_HFT_2022232.Test.LogicTest
                 //ACT
                 logic.Create(owner);
                 //ASSERT
-                moqHangarRepo.Verify(r => r.Create(owner), Times.Once);
+                moqOwnerRepo.Verify(r => r.Create(owner), Times.Once);
             }
             [Test]
             public void CreateHangarTest_NoName()
@@ -60,7 +60,7 @@ namespace JFL7XU_HFT_2022232.Test.LogicTest
                 }
                 catch { }
                 //ASSERT
-                moqHangarRepo.Verify(r => r.Create(owner), Times.Never);
+                moqOwnerRepo.Verify(r => r.Create(owner), Times.Never);
             }
             [Test]
             public void CreateHangarTest_IDExists()
@@ -74,7 +74,7 @@ namespace JFL7XU_HFT_2022232.Test.LogicTest
                 }
                 catch { }
                 //ASSERT
-                moqHangarRepo.Verify(r => r.Create(owner), Times.Never);
+                moqOwnerRepo.Verify(r => r.Create(owner), Times.Never);
             }
 
             //Read tests
@@ -85,7 +85,7 @@ namespace JFL7XU_HFT_2022232.Test.LogicTest
                 //ACT
                 logic.Read(ID);
                 //ASSERT
-                moqHangarRepo.Verify(r => r.Read(ID), Times.Once);
+                moqOwnerRepo.Verify(r => r.Read(ID), Times.Once);
             }
             [Test]
             public void ReadHangarTest_Exception()
@@ -104,7 +104,7 @@ namespace JFL7XU_HFT_2022232.Test.LogicTest
                 //ACT
                 logic.Update(owner);
                 //ASSERT
-                moqHangarRepo.Verify(r => r.Update(owner), Times.Once);
+                moqOwnerRepo.Verify(r => r.Update(owner), Times.Once);
             }
             [Test]
             public void UpdateHangarTest_InCorrect()
@@ -117,7 +117,7 @@ namespace JFL7XU_HFT_2022232.Test.LogicTest
                 }
                 catch { }
                 //ASSERT
-                moqHangarRepo.Verify(r => r.Update(owner), Times.Never);
+                moqOwnerRepo.Verify(r => r.Update(owner), Times.Never);
             }
         }
     }
