@@ -38,8 +38,5 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
         {
             repo.Update(item);
         }
-
-        //Non-CRUDs
-
     }
 }

@@ -37,12 +37,5 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
         {
             repo.Update(item);
         }
-
-        //Non-CRUDs
-        public IEnumerable<Hangar> ListHangars_WithShipsMoreThan(int quantity)
-        {
-            return repo.ReadAll().Where(h => h.Owner.Ships.Count > quantity);
-        }
-
     }
 }
