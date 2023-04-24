@@ -39,7 +39,7 @@ namespace JFL7XU_HFT_2022232.Test.LogicTest
 
             //Create tests
             [Test]
-            public void CreateHangarTest_Correct()
+            public void CreateOwnerTest_Correct()
             {
                 var owner = new Owner(5, "Feri", 20);
 
@@ -49,7 +49,7 @@ namespace JFL7XU_HFT_2022232.Test.LogicTest
                 moqOwnerRepo.Verify(r => r.Create(owner), Times.Once);
             }
             [Test]
-            public void CreateHangarTest_NoName()
+            public void CreateOwnerTest_NoName()
             {
                 var owner = new Owner(5, "", 20);
 
@@ -63,7 +63,7 @@ namespace JFL7XU_HFT_2022232.Test.LogicTest
                 moqOwnerRepo.Verify(r => r.Create(owner), Times.Never);
             }
             [Test]
-            public void CreateHangarTest_IDExists()
+            public void CreateOwnerTest_IDExists()
             {
                 var owner = new Owner(3, "Feri", 20);
 
@@ -79,7 +79,7 @@ namespace JFL7XU_HFT_2022232.Test.LogicTest
 
             //Read tests
             [Test]
-            public void ReadHangarTest_Correct()
+            public void ReadOwnerTest_Correct()
             {
                 int ID = 3;
                 //ACT
@@ -88,7 +88,7 @@ namespace JFL7XU_HFT_2022232.Test.LogicTest
                 moqOwnerRepo.Verify(r => r.Read(ID), Times.Once);
             }
             [Test]
-            public void ReadHangarTest_Exception()
+            public void ReadOwnerTest_Exception()
             {
                 int ID = 6;
                 //ACT
@@ -98,7 +98,7 @@ namespace JFL7XU_HFT_2022232.Test.LogicTest
 
             //Update tests
             [Test]
-            public void UpdateHangarTest_Correct()
+            public void UpdateOwnerTest_Correct()
             {
                 var owner = new Owner(3, "Feri", 20);
                 //ACT
@@ -107,7 +107,7 @@ namespace JFL7XU_HFT_2022232.Test.LogicTest
                 moqOwnerRepo.Verify(r => r.Update(owner), Times.Once);
             }
             [Test]
-            public void UpdateHangarTest_InCorrect()
+            public void UpdateOwnerTest_InCorrect()
             {
                 var owner = new Owner(5, "Feri", 20);
                 //ACT
