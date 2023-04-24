@@ -1,4 +1,6 @@
-﻿using JFL7XU_HFT_2022232.Models;
+﻿using JFL7XU_HFT_2022232.Logic.Interfaces;
+using JFL7XU_HFT_2022232.Models;
+using JFL7XU_HFT_2022232.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,19 +9,50 @@ using System.Threading.Tasks;
 
 namespace JFL7XU_HFT_2022232.Logic.Logics
 {
-    public class NonCrudLogic
+    public class NonCrudLogic : INonCrudLogic
     {
-        public IEnumerable<Starship> ListShips_WhichBuiltAfter(int year)
+        IRepository<Hangar> HangarRepo;
+        IRepository<Owner> OwnerRepo;
+        IRepository<Starship> StarshipRepo;
+        public NonCrudLogic(IRepository<Hangar> hangarRepo, IRepository<Owner> ownerRepo, IRepository<Starship> starshipRepo)
         {
-
+            HangarRepo = hangarRepo;
+            OwnerRepo = ownerRepo;
+            StarshipRepo = starshipRepo;
         }
-        public IEnumerable<Starship> ListShips_WhichBuiltBefore(int year)
-        {
 
-        }
         public IEnumerable<Hangar> ListHangars_WithShipsMoreThan(int quantity)
         {
-            return repo.ReadAll().Where(h => h.Owner.Ships.Count > quantity);
+            return HangarRepo.ReadAll().Where(h => h.Owner.Ships.Count > quantity);
+        }
+        public IEnumerable<Hangar> ListHangars_WithShipsLessThan(int quantity)
+        {
+            return HangarRepo.ReadAll().Where(h => h.Owner.Ships.Count < quantity);
+        }
+        public IEnumerable<Owner> ListOwners_OlderThan(int year)
+        {
+            return OwnerRepo.ReadAll().Where(o => o.Age > year);
+        }
+        public IEnumerable<Owner> ListOwners_YoungerThan(int year)
+        {
+            return OwnerRepo.ReadAll().Where(o => o.Age < year);
+        }
+        public IEnumerable<Owner> ListOwners_YoungerAndHasMoreShipsThan(int year, int quantity)
+        {
+            return OwnerRepo.ReadAll().Where(o => o.Age < year && o.Ships.Count > quantity);
+        }
+        public IEnumerable<Starship> ListShips_WhichBuiltAfter(int year)
+        {
+            return StarshipRepo.ReadAll().Where(ship => ship.YearOfManu > year);
+        }
+        public IEnumerable<OwnershipStatistics> ListStatistics()
+        {
+            IEnumerable<OwnershipStatistics> stats = new List<OwnershipStatistics>();
+            foreach (var owner in OwnerRepo.ReadAll())
+            {
+                stats.Append(new OwnershipStatistics(owner,owner.Hangar,owner.Ships));
+            }
+            return stats;
         }
     }
 }
