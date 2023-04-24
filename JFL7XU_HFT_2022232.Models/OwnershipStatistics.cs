@@ -26,13 +26,14 @@ namespace JFL7XU_HFT_2022232.Models
         public override string ToString()
         {
             string Out = "";
-            Out += "Owner:\n" + OwnerName + " " + OwnerAge + " years old, has hangar at " + HangarLocation + ", named " + HangarName + ".\nOwners ships:\n";
+            Out += "Owner:\n" + OwnerName + " " + OwnerAge + " years old, has hangar at " + HangarLocation + ", named " + HangarName + ".\nOwner's ships:\n";
             int i=0;
             foreach (var ship in Ships)
             {
                 i++;
-                Out += "\n"+i +". ship: '"+ship.Name+"' type: "+((ShipType)ship.Type).ToString()+", built in "+ship.YearOfManu+".";
+                Out += "\n\t"+i +". ship: '"+ship.Name+"' type: "+((ShipType)ship.Type).ToString()+", built in "+ship.YearOfManu+".";
             }
+            Out += "\n";
             return Out;
         }
     }
