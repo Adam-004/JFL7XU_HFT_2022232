@@ -53,7 +53,7 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
         }
         public void Update(Starship item)
         {
-            if (repo.Read(item.ID) is not null)
+            if (repo.Read(item.ID) is null)
             {
                 throw new GivenIDNotFoundException();
             }
