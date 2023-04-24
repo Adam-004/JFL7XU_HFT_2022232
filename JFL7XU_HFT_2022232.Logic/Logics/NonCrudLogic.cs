@@ -47,11 +47,20 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
         }
         public IEnumerable<OwnershipStatistics> ListStatistics()
         {
-            IEnumerable<OwnershipStatistics> stats = new List<OwnershipStatistics>();
-            foreach (var owner in OwnerRepo.ReadAll())
+            List<OwnershipStatistics> stats = new List<OwnershipStatistics>();
+            Owner owner;
+            IEnumerable<Starship> ships;
+            Hangar hangar;
+
+            foreach (var item in OwnerRepo.ReadAll())
             {
-                stats.Append(new OwnershipStatistics(owner,owner.Hangar,owner.Ships));
+                owner = item;
+                ships = item.Ships;
+                hangar = item.Hangar;
+                
+                stats.Add(new OwnershipStatistics(owner, hangar, ships));
             }
+
             return stats;
         }
     }
