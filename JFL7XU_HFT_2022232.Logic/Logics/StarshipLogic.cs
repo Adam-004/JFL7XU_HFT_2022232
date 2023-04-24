@@ -1,5 +1,6 @@
 ﻿using JFL7XU_HFT_2022232.Logic.Interfaces;
 using JFL7XU_HFT_2022232.Models;
+using JFL7XU_HFT_2022232.Models.Exceptions;
 using JFL7XU_HFT_2022232.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -19,15 +20,28 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
 
         public void Create(Starship item)
         {
+            if (repo.Read(item.ID) is not null)
+            {
+                throw new GivenIDAlreadyExistsException();
+            }
             repo.Create(item);
         }
         public void Delete(int id)
         {
+            if (repo.Read(id) is not null)
+            {
+                throw new GivenIDNotFoundException();
+            }
             repo.Delete(id);
         }
         public Starship Read(int id)
         {
-            return repo.Read(id);
+            var ship = repo.Read(id);
+            if (ship is null)
+            {
+                throw new NoHangarFoundWithGivenIdException();
+            }
+            return ship;
         }
         public IEnumerable<Starship> ReadAll()
         {
@@ -35,6 +49,10 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
         }
         public void Update(Starship item)
         {
+            if (repo.Read(item.ID) is not null)
+            {
+                throw new GivenIDNotFoundException();
+            }
             repo.Update(item);
         }
     }
