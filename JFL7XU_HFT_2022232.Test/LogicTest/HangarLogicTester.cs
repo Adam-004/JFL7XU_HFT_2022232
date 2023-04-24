@@ -1,5 +1,6 @@
 ﻿using JFL7XU_HFT_2022232.Logic.Logics;
 using JFL7XU_HFT_2022232.Models;
+using JFL7XU_HFT_2022232.Models.Exceptions;
 using JFL7XU_HFT_2022232.Repository.Interfaces;
 using Moq;
 using NUnit.Framework;
@@ -27,6 +28,10 @@ namespace JFL7XU_HFT_2022232.Test.LogicTest
                 new Hangar(3,"Self-Land","Orison",3),
                 new Hangar(4,"Kenedy Launch Station","Houston",4),
             }.AsQueryable());
+            moqHangarRepo.Setup(mhr => mhr.Read(1)).Returns(new Hangar(1, "Trade leage platform", "Nabu", 1));
+            moqHangarRepo.Setup(mhr => mhr.Read(2)).Returns(new Hangar(2, "Imperial Landing Pod", "Nevarró", 2));
+            moqHangarRepo.Setup(mhr => mhr.Read(3)).Returns(new Hangar(3, "Self-Land", "Orison", 3));
+            moqHangarRepo.Setup(mhr => mhr.Read(4)).Returns(new Hangar(4, "Kenedy Launch Station", "Houston", 4));
             logic = new HangarLogic(moqHangarRepo.Object);
         }
 
@@ -54,6 +59,64 @@ namespace JFL7XU_HFT_2022232.Test.LogicTest
             catch{}
             //ASSERT
             moqHangarRepo.Verify(r => r.Create(hangar), Times.Never);
+        }
+        [Test]
+        public void CreateHangarTest_NoLocation()
+        {
+            var hangar = new Hangar(5, "Falcon Launch Station", "", 5);
+
+            //ACT
+            try
+            {
+                logic.Create(hangar);
+            }
+            catch { }
+            //ASSERT
+            moqHangarRepo.Verify(r => r.Create(hangar), Times.Never);
+        }
+        [Test]
+        public void CreateHangarTest_IDExists()
+        {
+            var hangar = new Hangar(3, "Falcon Launch Station", "Cape Canaveral", 5);
+
+            //ACT
+            try
+            {
+                logic.Create(hangar);
+            }
+            catch { }
+            //ASSERT
+            moqHangarRepo.Verify(r => r.Create(hangar), Times.Never);
+        }
+
+        //Read tests
+        [Test]
+        public void ReadHangarTest_Correct()
+        {
+            int ID = 3;
+            //ACT
+            logic.Read(ID);
+            //ASSERT
+            moqHangarRepo.Verify(r => r.Read(ID), Times.Once);
+        }
+        [Test]
+        public void ReadHangarTest_Exception()
+        {
+            int ID = 6;
+            //ACT
+            //ASSERT
+            Assert.That(() => logic.Read(ID), Throws.TypeOf<NoHangarFoundWithGivenIdException>());
+        }
+
+        //Update tests
+        [Test]
+        public void UpdateHangarTest_Correct()
+        {
+            var hangar = new Hangar(3, "Falcon Launch Station", "Cape Canaveral", 5);
+            //ACT
+            logic.Update(hangar);
+            //ASSERT
+            moqHangarRepo.Verify(r => r.Update(hangar), Times.Once);
         }
     }
 }
