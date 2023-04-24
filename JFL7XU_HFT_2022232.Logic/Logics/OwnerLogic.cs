@@ -25,7 +25,7 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
             {
                 throw new GivenIDAlreadyExistsException();
             }
-            else if (item.Name is null)
+            else if (item.Name is null || item.Name == "")
             {
                 throw new NameWasEmptyException();
             }
