@@ -25,13 +25,10 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
             {
                 throw new GivenIDAlreadyExistsException();
             }
-<<<<<<< HEAD
             else if (item.Name is null)
             {
                 throw new NameWasEmptyException();
             }
-=======
->>>>>>> 3e8f4f12d6b3ead1ac18fce3bc9734f3281677ab
             repo.Create(item);
         }
         public void Delete(int id)
