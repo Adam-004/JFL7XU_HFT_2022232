@@ -30,5 +30,9 @@ namespace JFL7XU_HFT_2022232.Models
             Name = name;
             Age = age;
         }
+        public override string ToString()
+        {
+            return $"{ID}. {Name}, {Age} years old.";
+        }
     }
 }

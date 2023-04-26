@@ -32,5 +32,10 @@ namespace JFL7XU_HFT_2022232.Models
             Location = location;
             OwnerID = ownerID;
         }
+
+        public override string ToString()
+        {
+            return $"{Id}. {Name}, hangar loacated at {Location}.";
+        }
     }
 }

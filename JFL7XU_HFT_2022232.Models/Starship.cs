@@ -50,5 +50,9 @@ namespace JFL7XU_HFT_2022232.Models
             Type = type;
             OwnerID = ownerId;
         }
+        public override string ToString()
+        {
+            return $"{ID}. {Name}, {(ShipType)Type} class ship, weighs {Size} tons, manufactured in the year of {YearOfManu}.";
+        }
     }
 }
