@@ -1,3 +1,4 @@
+using Castle.Core.Configuration;
 using JFL7XU_HFT_2022232.Logic.Interfaces;
 using JFL7XU_HFT_2022232.Logic.Logics;
 using JFL7XU_HFT_2022232.Models;
@@ -65,12 +66,11 @@ namespace JFL7XU_HFT_2022232.Endpoint
 
             app.UseRouting();
 
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapControllers();
             });
         }
     }
