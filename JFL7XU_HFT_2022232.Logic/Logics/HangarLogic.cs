@@ -36,7 +36,7 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
         }
         public void Delete(int id)
         {
-            if (repo.Read(id) is not null)
+            if (repo.Read(id) is null)
             {
                 throw new GivenIDNotFoundException();
             }
