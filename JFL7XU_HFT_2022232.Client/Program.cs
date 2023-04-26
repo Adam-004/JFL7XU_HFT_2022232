@@ -11,7 +11,89 @@ namespace JFL7XU_HFT_2022232.Client
         #region Methods
         static void Create(string model)
         {
-            
+            if (model == "Owner")
+            {
+                string Name;
+                int Age;
+                int ID;
+
+                Console.Write("Owner's id:\t");
+                ID = int.Parse(Console.ReadLine());
+                Console.WriteLine();
+
+                Console.Write("Owner's name:\t");
+                Name = Console.ReadLine();
+
+                Console.WriteLine();
+                Console.Write("Owner's age:\t");
+                Age = int.Parse(Console.ReadLine());
+
+                var o = new Owner(ID, Name, Age);
+                rest.Post(o, "Owner");
+            }
+            else if (model == "Ship")
+            {
+                string Name;
+                int Size;
+                int ID;
+                int Yom;
+                int Type;
+                int oID;
+
+                Console.Write("Starships's id:\t");
+                ID = int.Parse(Console.ReadLine());
+                Console.WriteLine();
+
+                Console.Write("Starships's name:\t");
+                Name = Console.ReadLine();
+                Console.WriteLine();
+
+                Console.Write("Starships's size (in tons):\t");
+                Size = int.Parse(Console.ReadLine());
+                Console.WriteLine();
+
+                Console.Write("Starships's year of manufacture:\t");
+                Yom = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("Starship types:");
+                for (int i = 1; i < 5; i++)
+                {
+                    Console.WriteLine(i + " = " + ((ShipType)i));
+                }
+                Console.WriteLine("Starships's type (number):\t");
+                Type = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("Owner's ID:\t");
+                oID = int.Parse(Console.ReadLine());
+
+                var o = new Starship(ID, Name, Size, Yom, Type, oID);
+                rest.Post(o, "Starship");
+            }
+            else if (model == "Hangar")
+            {
+                int ID;
+                string Name;
+                string Location;
+                int oID;
+
+                Console.Write("Hangars's id:\t");
+                ID = int.Parse(Console.ReadLine());
+
+                Console.WriteLine();
+
+                Console.Write("Hangars's name:\t");
+                Name = Console.ReadLine();
+
+                Console.WriteLine();
+                Console.Write("Hangars's location:\t");
+                Location = Console.ReadLine();
+
+                Console.Write("Owner's id:\t");
+                oID = int.Parse(Console.ReadLine());
+
+                var o = new Hangar(ID, Name, Location, oID);
+                rest.Post(o, "Hangars");
+            }
         }
         static void Read(string model)
         {
