@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace JFL7XU_HFT_2022232.Endpoint.Controllers
 {
-    [Route("[controller]/[action]")]
+    [Route("[controller]")]
     [ApiController]
     public class OwnerController : ControllerBase
     {
