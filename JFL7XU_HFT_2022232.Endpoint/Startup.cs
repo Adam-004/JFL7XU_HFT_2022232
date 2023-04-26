@@ -37,7 +37,6 @@ namespace JFL7XU_HFT_2022232.Endpoint
             services.AddTransient<INonCrudLogic, NonCrudLogic>();
 
             services.AddControllers();
-            //services.AddSwaggerGen();
             services.AddSwaggerGen(s =>
             {
                 s.SwaggerDoc("v1", new OpenApiInfo { Title = "JFL7XU_HFT_2022232.Endpoint", Version = "v1" });
