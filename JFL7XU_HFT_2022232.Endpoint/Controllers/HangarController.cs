@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace JFL7XU_HFT_2022232.Endpoint.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]/[action]")]
     [ApiController]
     public class HangarController : ControllerBase
     {
