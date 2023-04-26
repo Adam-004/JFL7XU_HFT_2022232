@@ -48,6 +48,7 @@ namespace JFL7XU_HFT_2022232.Endpoint.Controllers
         {
             return logic.ListOwners_YoungerAndHasMoreShipsThan(year, quantity);
         }
+        [HttpGet]
         public IEnumerable<OwnershipStatistics> ListStatistics()
         {
             return logic.ListStatistics();
