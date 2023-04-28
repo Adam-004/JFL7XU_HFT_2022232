@@ -389,7 +389,12 @@ namespace JFL7XU_HFT_2022232.Client
         }
         public static void ListStatistics()
         {
-
+            List<OwnershipStatistics> Out = rest.Get<OwnershipStatistics>("NonCrud/ListStatistics");
+            foreach (var item in Out)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.ReadLine();
         }
         #endregion
     }
