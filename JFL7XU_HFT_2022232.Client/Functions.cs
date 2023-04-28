@@ -12,7 +12,7 @@ namespace JFL7XU_HFT_2022232.Client
         static RestService rest;
         public static void Init()
         {
-            rest = new RestService("http://localhost:40566/");
+            rest = new RestService("http://localhost:40567/");
         }
         #region CRUD
         public static void Create(string model)
@@ -117,11 +117,11 @@ namespace JFL7XU_HFT_2022232.Client
             }
             else if (model == "Ship")
             {
-                o = rest.Get<Owner>(ID, "Starship");
+                o = rest.Get<Starship>(ID, "Starship");
             }
             else if (model == "Hangar")
             {
-                o = rest.Get<Owner>(ID, "Hangar");
+                o = rest.Get<Hangar>(ID, "Hangar");
             }
             Console.Clear();
             Console.WriteLine("Listed " + model + " with ID: "+ID);
@@ -176,14 +176,12 @@ namespace JFL7XU_HFT_2022232.Client
                     Console.WriteLine(item.ToString());
                 }
 
-                Console.Write("Owner's ID:\t");
+                Console.Write("\nOwner's ID:\t");
                 ID = int.Parse(Console.ReadLine());
-                Console.WriteLine();
 
                 Console.Write("Owner's name:\t");
                 Name = Console.ReadLine();
 
-                Console.WriteLine();
                 Console.Write("Owner's age:\t");
                 Age = int.Parse(Console.ReadLine());
 
@@ -213,30 +211,27 @@ namespace JFL7XU_HFT_2022232.Client
                     Console.WriteLine(item.ToString());
                 }
 
-                Console.Write("Starships's id:\t");
+                Console.Write("\nStarships's id:\t");
                 ID = int.Parse(Console.ReadLine());
-                Console.WriteLine();
 
                 Console.Write("Starship's name:\t");
                 Name = Console.ReadLine();
-                Console.WriteLine();
 
                 Console.Write("Starships's size (in tons):\t");
                 Size = int.Parse(Console.ReadLine());
-                Console.WriteLine();
 
                 Console.Write("Starships's year of manufacture:\t");
                 Yom = int.Parse(Console.ReadLine());
 
-                Console.WriteLine("Starship types:");
+                Console.WriteLine("\nStarship types:");
                 for (int i = 1; i < 5; i++)
                 {
                     Console.WriteLine(i + " = " + ((ShipType)i));
                 }
-                Console.WriteLine("Starships's type (number):\t");
+                Console.Write("Starships's type (number):\t");
                 Type = int.Parse(Console.ReadLine());
 
-                Console.WriteLine("Owner's ID:\t");
+                Console.Write("Owner's ID:\t");
                 oID = int.Parse(Console.ReadLine());
 
                 var o = new Starship(ID, Name, Size, Yom, Type, oID);
@@ -263,15 +258,11 @@ namespace JFL7XU_HFT_2022232.Client
                     Console.WriteLine(item.ToString());
                 }
 
-                Console.Write("Hangars's id:\t");
+                Console.Write("\nHangars's id:\t");
                 ID = int.Parse(Console.ReadLine());
-
-                Console.WriteLine();
 
                 Console.Write("Hangars's name:\t");
                 Name = Console.ReadLine();
-
-                Console.WriteLine();
                 Console.Write("Hangars's location:\t");
                 Location = Console.ReadLine();
 
@@ -306,14 +297,14 @@ namespace JFL7XU_HFT_2022232.Client
                     Console.WriteLine(item.ToString());
                 }
 
-                Console.Write("Owner to delete:\nOwner's ID:\t");
+                Console.Write("\nOwner to delete:\nOwner's ID:\t");
                 ID = int.Parse(Console.ReadLine());
                 Console.WriteLine();
 
                 rest.Delete(ID, "Owner");
 
                 Console.Clear();
-                Console.WriteLine("Updated " + model + " on ID: " + ID);
+                Console.WriteLine("Deleted " + model + " on ID: " + ID);
 
                 Out = rest.Get<Owner>("Owner");
                 foreach (var item in Out)
@@ -329,14 +320,14 @@ namespace JFL7XU_HFT_2022232.Client
                     Console.WriteLine(item.ToString());
                 }
 
-                Console.Write("Starship to delete:\nStarship's ID:\t");
+                Console.Write("\nStarship to delete:\nStarship's ID:\t");
                 ID = int.Parse(Console.ReadLine());
                 Console.WriteLine();
 
                 rest.Delete(ID, "Owner");
 
                 Console.Clear();
-                Console.WriteLine("Updated " + model + " on ID: " + ID);
+                Console.WriteLine("Deleted " + model + " on ID: " + ID);
 
                 Out = rest.Get<Starship>("Starship");
                 foreach (var item in Out)
@@ -352,14 +343,14 @@ namespace JFL7XU_HFT_2022232.Client
                     Console.WriteLine(item.ToString());
                 }
 
-                Console.Write("Hangar to delete:\nHangar's ID:\t");
+                Console.Write("\nHangar to delete:\nHangar's ID:\t");
                 ID = int.Parse(Console.ReadLine());
                 Console.WriteLine();
 
                 rest.Delete(ID, "Hangar");
 
                 Console.Clear();
-                Console.WriteLine("Updated " + model + " on ID: " + ID);
+                Console.WriteLine("Deleted " + model + " on ID: " + ID);
 
                 Out = rest.Get<Hangar>("Hangar");
                 foreach (var item in Out)
