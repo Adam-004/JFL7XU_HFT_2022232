@@ -35,7 +35,7 @@ namespace JFL7XU_HFT_2022232.Models
 
         public override string ToString()
         {
-            return $"{Id}. {Name}, hangar loacated at {Location}.";
+            return $"{Id}. {Name}, loacated at {Location}.";
         }
     }
 }
