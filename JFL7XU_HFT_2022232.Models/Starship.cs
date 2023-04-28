@@ -41,7 +41,7 @@ namespace JFL7XU_HFT_2022232.Models
         {
             if (!(type > 0 && type <= 4))
             {
-                throw new InvalidShipTypeException();
+                throw new ArgumentException("Invalid shiptype!");
             }
             ID = id;
             Name = name;
