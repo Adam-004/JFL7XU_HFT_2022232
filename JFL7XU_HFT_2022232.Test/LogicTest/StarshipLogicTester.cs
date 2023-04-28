@@ -91,7 +91,7 @@ namespace JFL7XU_HFT_2022232.Test.LogicTest
             int ID = 6;
             //ACT
             //ASSERT
-            Assert.That(() => logic.Read(ID), Throws.TypeOf<NoStarshipFoundWithGivenIdException>());
+            Assert.That(() => logic.Read(ID), Throws.TypeOf<ArgumentException>());
         }
 
         //Update tests

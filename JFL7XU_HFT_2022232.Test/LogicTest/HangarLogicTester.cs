@@ -105,7 +105,7 @@ namespace JFL7XU_HFT_2022232.Test.LogicTest
             int ID = 6;
             //ACT
             //ASSERT
-            Assert.Throws<NoHangarFoundWithGivenIdException>(() => _ = logic.Read(ID));
+            Assert.Throws<ArgumentException>(() => _ = logic.Read(ID));
         }
 
         //Update tests
