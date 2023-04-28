@@ -57,7 +57,7 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
                 owner = item;
                 ships = item.Ships;
                 hangar = item.Hangar;
-                
+                ;
                 stats.Add(new OwnershipStatistics(owner, hangar, ships));
             }
 
