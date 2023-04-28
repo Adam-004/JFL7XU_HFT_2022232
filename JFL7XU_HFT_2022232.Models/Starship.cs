@@ -25,8 +25,8 @@ namespace JFL7XU_HFT_2022232.Models
         [StringLength(100)]
         public string Name { get; set; }
         public int Size { get; set; } //in tons
-        [Range(1,4)]
         public int YearOfManu { get; set; } //year of manufacture
+        [Range(1, 4)]
         public int Type { get; set; }
         public int OwnerID { get; set; }
 
