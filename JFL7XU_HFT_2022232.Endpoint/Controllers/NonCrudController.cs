@@ -36,7 +36,7 @@ namespace JFL7XU_HFT_2022232.Endpoint.Controllers
         [HttpGet("{year}")]
         public IEnumerable<Owner> ListOwners_OlderThan(int year)
         {
-            return logic.ListOwners_YoungerThan(year);
+            return logic.ListOwners_OlderThan(year);
         }
         [HttpGet("{year}")]
         public IEnumerable<Owner> ListOwners_YoungerThan(int year)
