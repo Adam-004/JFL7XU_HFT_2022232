@@ -1,8 +1,7 @@
 ﻿using JFL7XU_HFT_2022232.Models;
 using System;
 using ConsoleTools;
-using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
+
 
 namespace JFL7XU_HFT_2022232.Client
 {
@@ -15,12 +14,12 @@ namespace JFL7XU_HFT_2022232.Client
             #region Menu
             //Statistics Menu
             var mainstatsSubMenu = new ConsoleMenu(args, level: 1)
-                .Add("List all ships that are built after given year", () => Functions.ListShips_WhichBuiltAfter(0))
-                .Add("List all hangars that has more than 'X' ships", () => Functions.ListHangars_WithShipsMoreThan(0))
-                .Add("List all hangars that has less than 'X' ships", () => Functions.ListHangars_WithShipsLessThan(0))
-                .Add("List all owners who are older than", () => Functions.ListOwners_OlderThan(0))
-                .Add("List all owners who are younger than", () => Functions.ListOwners_YoungerThan(0))
-                .Add("List all owners who are younger than 'X' and has more ships than", () => Functions.ListOwners_YoungerAndHasMoreShipsThan(0,0))
+                .Add("List all ships that are built after given year", () => Functions.ListShips_WhichBuiltAfter())
+                .Add("List all hangars that has more than 'X' ships", () => Functions.ListHangars_WithShipsMoreThan())
+                .Add("List all hangars that has less than 'X' ships", () => Functions.ListHangars_WithShipsLessThan())
+                .Add("List all owners who are older than", () => Functions.ListOwners_OlderThan())
+                .Add("List all owners who are younger than", () => Functions.ListOwners_YoungerThan())
+                .Add("List all owners who are younger than 'X' and has more ships than", () => Functions.ListOwners_YoungerAndHasMoreShipsThan())
                 .Add("List report", () => Functions.ListStatistics())
                 .Add("Exit", ConsoleMenu.Close)
                 .Configure(config => {

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -60,7 +61,7 @@ namespace JFL7XU_HFT_2022232.Client
                 Size = int.Parse(Console.ReadLine());
                 Console.WriteLine();
 
-                Console.Write("Starships's year of manufacture:\t");
+                Console.Write("Starships's age of manufacture:\t");
                 Yom = int.Parse(Console.ReadLine());
 
                 Console.WriteLine("Starship types:");
@@ -220,7 +221,7 @@ namespace JFL7XU_HFT_2022232.Client
                 Console.Write("Starships's size (in tons):\t");
                 Size = int.Parse(Console.ReadLine());
 
-                Console.Write("Starships's year of manufacture:\t");
+                Console.Write("Starships's age of manufacture:\t");
                 Yom = int.Parse(Console.ReadLine());
 
                 Console.WriteLine("\nStarship types:");
@@ -363,37 +364,134 @@ namespace JFL7XU_HFT_2022232.Client
         }
         #endregion
         #region Non-CRUD
-        public static void ListShips_WhichBuiltAfter(int year)
+        public static void ListShips_WhichBuiltAfter()
         {
 
+            int year;
+
+            Console.Clear();
+            Console.Write($"Year: ");
+            year = int.Parse(Console.ReadLine());
+            
+            Console.Clear();
+            Console.WriteLine($"Listing ships which are built after {year}:\n");
+
+            List<Starship> Out = rest.Get<Starship>("NonCrud/ListShips_WhichBuiltAfter/"+year);
+            foreach (var item in Out)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.WriteLine("\nPress any key to continue.");
+            Console.ReadLine();
         }
-        public static void ListHangars_WithShipsMoreThan(int quantity)
+        public static void ListHangars_WithShipsMoreThan()
         {
+            int quantity;
 
+            Console.Clear();
+            Console.Write($"Quantity: ");
+            quantity = int.Parse(Console.ReadLine());
+
+            Console.Clear();
+            Console.WriteLine($"Listing hangars that have more than {quantity} ships:\n");
+
+            List<Hangar> Out = rest.Get<Hangar>("NonCrud/ListHangars_WithShipsMoreThan/" + quantity);
+            foreach (var item in Out)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.WriteLine("\nPress any key to continue.");
+            Console.ReadLine();
         }
-        public static void ListHangars_WithShipsLessThan(int quantity)
+        public static void ListHangars_WithShipsLessThan()
         {
+            int quantity;
 
+            Console.Clear();
+            Console.Write($"Quantity: ");
+            quantity = int.Parse(Console.ReadLine());
+
+            Console.Clear();
+            Console.WriteLine($"Listing hangars that have less than {quantity} ships:\n");
+
+            List<Hangar> Out = rest.Get<Hangar>("NonCrud/ListHangars_WithShipsLessThan/" + quantity);
+            foreach (var item in Out)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.WriteLine("\nPress any key to continue.");
+            Console.ReadLine();
         }
-        public static void ListOwners_OlderThan(int year)
+        public static void ListOwners_OlderThan()
         {
+            int age;
 
+            Console.Clear();
+            Console.Write($"Age: ");
+            age = int.Parse(Console.ReadLine());
+
+            Console.Clear();
+            Console.WriteLine($"Listing owners who are older than {age}:\n");
+
+            List<Owner> Out = rest.Get<Owner>("NonCrud/ListOwners_OlderThan/" + age);
+            foreach (var item in Out)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.WriteLine("\nPress any key to continue.");
+            Console.ReadLine();
         }
-        public static void ListOwners_YoungerThan(int year)
+        public static void ListOwners_YoungerThan()
         {
+            int age;
 
+            Console.Clear();
+            Console.Write($"Age: ");
+            age = int.Parse(Console.ReadLine());
+
+            Console.Clear();
+            Console.WriteLine($"Listing owners who are younger than {age}:\n");
+
+            List<Owner> Out = rest.Get<Owner>("NonCrud/ListOwners_YoungerThan/" + age);
+            foreach (var item in Out)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.WriteLine("\nPress any key to continue.");
+            Console.ReadLine();
         }
-        public static void ListOwners_YoungerAndHasMoreShipsThan(int year, int quantity)
+        public static void ListOwners_YoungerAndHasMoreShipsThan()
         {
+            int age;
+            int quantity;
 
+            Console.Clear();
+            Console.Write($"Age: ");
+            age = int.Parse(Console.ReadLine());
+            Console.Write($"Quantity: ");
+            quantity = int.Parse(Console.ReadLine());
+
+            Console.Clear();
+            Console.WriteLine($"Listing owners who are younger than {age} and has more ships than {quantity}:\n");
+
+            List<Owner> Out = rest.Get<Owner>($"NonCrud/ListOwners_YoungerAndHasMoreShipsThan/{age}/{quantity}");
+            foreach (var item in Out)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.WriteLine("\nPress any key to continue.");
+            Console.ReadLine();
         }
         public static void ListStatistics()
         {
+            Console.Clear();
+            Console.WriteLine("Listing Statistics\n");
             List<OwnershipStatistics> Out = rest.Get<OwnershipStatistics>("NonCrud/ListStatistics");
             foreach (var item in Out)
             {
                 Console.WriteLine(item.ToString());
             }
+            Console.WriteLine("\nPress any key to continue.");
             Console.ReadLine();
         }
         #endregion
