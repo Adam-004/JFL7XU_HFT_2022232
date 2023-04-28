@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace JFL7XU_HFT_2022232.Models
@@ -10,25 +11,21 @@ namespace JFL7XU_HFT_2022232.Models
     {
         public OwnershipStatistics(Owner owner, Hangar hangar, IEnumerable<Starship> ships)
         {
-            OwnerName = owner.Name;
-            OwnerAge = owner.Age;
-            HangarName = hangar.Name;
-            HangarLocation = hangar.Location;
-            Ships = ships;
+            Owner = owner;
+            Hangar = hangar;
+            this.ships = ships;
         }
 
-        string OwnerName;
-        int OwnerAge;
-        string HangarName;
-        string HangarLocation;
-        public IEnumerable<Starship> Ships { get; set; }
+        public Owner Owner { get; set; }
+        public Hangar Hangar { get; set; }
+        public IEnumerable<Starship> ships { get; set; }
 
         public override string ToString()
         {
             string Out = "";
-            Out += "Owner:\n" + OwnerName + " " + OwnerAge + " years old, has hangar at " + HangarLocation + ", named " + HangarName + ".\nOwner's ships:\n";
+            Out += "Owner:\n" + Owner.Name + " " + Owner.Age + " years old, has hangar at " + Hangar.Location + ", named " + Hangar.Name + ".\nOwner's ships:\n";
             int i=0;
-            foreach (var ship in Ships)
+            foreach (var ship in ships)
             {
                 i++;
                 Out += "\n\t"+i +". ship: '"+ship.Name+"' type: "+((ShipType)ship.Type).ToString()+", built in "+ship.YearOfManu+".";

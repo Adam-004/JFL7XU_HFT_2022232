@@ -1,5 +1,4 @@
-﻿using JFL7XU_HFT_2022232.Models.Exceptions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
