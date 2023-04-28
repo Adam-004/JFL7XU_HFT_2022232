@@ -325,7 +325,7 @@ namespace JFL7XU_HFT_2022232.Client
                 ID = int.Parse(Console.ReadLine());
                 Console.WriteLine();
 
-                rest.Delete(ID, "Owner");
+                rest.Delete(ID, "Starship");
 
                 Console.Clear();
                 Console.WriteLine("Deleted " + model + " on ID: " + ID);
