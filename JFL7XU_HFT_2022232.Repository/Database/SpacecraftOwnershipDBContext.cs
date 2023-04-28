@@ -92,7 +92,7 @@ namespace JFL7XU_HFT_2022232.Repository.Database
 
             modelBuilder.Entity<Hangar>().HasData(new Hangar[]
             {
-                new Hangar(1,"Trade leage platform","Nabu",1),
+                new Hangar(1,"Trade league platform","Nabu",1),
                 new Hangar(2,"Imperial Landing Pod","Nevarró",2),
                 new Hangar(3,"Self-Land","Orison",3),
                 new Hangar(4,"Kenedy Launch Station","Houston",4),
