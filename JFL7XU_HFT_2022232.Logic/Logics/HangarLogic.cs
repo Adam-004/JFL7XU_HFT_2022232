@@ -21,16 +21,16 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
         {
             if (repo.Read(item.Id) is not null)
             {
-                throw new GivenIDAlreadyExistsException();
+                throw new ArgumentException("ID already exists!");
             }
 
             else if (item.Name is null || item.Name == "")
             {
-                throw new NameWasEmptyException();
+                throw new ArgumentException("Name field was empty!");
             }
             else if (item.Location is null || item.Location == "")
             {
-                throw new LocationWasEmptyException();
+                throw new ArgumentException("Location field was empty!");
             }
             repo.Create(item);
         }
@@ -38,7 +38,7 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
         {
             if (repo.Read(id) is null)
             {
-                throw new GivenIDNotFoundException();
+                throw new ArgumentException("ID is not valid!");
             }
             repo.Delete(id);
         }
@@ -47,7 +47,7 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
             var hangar = repo.Read(id);
             if (hangar is null)
             {
-                throw new NoHangarFoundWithGivenIdException();
+                throw new ArgumentException("Hangar ID is not valid!");
             }
             return hangar;
         }
@@ -59,7 +59,7 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
         {
             if (repo.Read(item.Id) is null)
             {
-                throw new GivenIDNotFoundException();
+                throw new ArgumentException("ID is not valid!");
             }
             repo.Update(item);
         }
