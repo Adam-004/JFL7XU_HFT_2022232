@@ -1,6 +1,5 @@
 ﻿using JFL7XU_HFT_2022232.Logic.Logics;
 using JFL7XU_HFT_2022232.Models;
-using JFL7XU_HFT_2022232.Models.Exceptions;
 using JFL7XU_HFT_2022232.Repository.Interfaces;
 using Moq;
 using NUnit.Framework;
