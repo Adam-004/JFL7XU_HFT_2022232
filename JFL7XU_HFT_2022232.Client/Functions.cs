@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -101,7 +102,7 @@ namespace JFL7XU_HFT_2022232.Client
                 oID = int.Parse(Console.ReadLine());
 
                 var o = new Hangar(ID, Name, Location, oID);
-                rest.Post(o, "Hangars");
+                rest.Post(o, "Hangar");
             }
             Console.WriteLine("\nPress any key to continue.");
             Console.ReadLine();
@@ -271,7 +272,7 @@ namespace JFL7XU_HFT_2022232.Client
                 oID = int.Parse(Console.ReadLine());
 
                 var o = new Hangar(ID, Name, Location, oID);
-                rest.Put(o, "Hangars");
+                rest.Put(o, "Hangar");
 
                 Console.Clear();
                 Console.WriteLine("Updated "+model+" on ID: " + ID);
@@ -493,6 +494,23 @@ namespace JFL7XU_HFT_2022232.Client
             }
             Console.WriteLine("\nPress any key to continue.");
             Console.ReadLine();
+        }
+        #endregion
+        #region ExceptionHandling
+        public static void ExpHandle(Action function)
+        {
+            try
+            {
+                function();
+            }
+            catch (ArgumentException e)
+            {
+                Console.Clear();
+                Console.WriteLine("Error: ");
+                Console.WriteLine(e.Message);
+                Console.WriteLine("\nPress any key to continue.");
+                Console.ReadLine();
+            }
         }
         #endregion
     }
