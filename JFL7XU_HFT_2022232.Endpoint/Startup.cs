@@ -1,4 +1,5 @@
 using Castle.Core.Configuration;
+using JFL7XU_HFT_2022232.Endpoint.Services;
 using JFL7XU_HFT_2022232.Logic.Interfaces;
 using JFL7XU_HFT_2022232.Logic.Logics;
 using JFL7XU_HFT_2022232.Models;
@@ -72,7 +73,7 @@ namespace JFL7XU_HFT_2022232.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHub<SignaalRHub>("/hub");
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }
