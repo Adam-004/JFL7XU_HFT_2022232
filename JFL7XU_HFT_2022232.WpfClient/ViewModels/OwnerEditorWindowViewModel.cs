@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using JFL7XU_HFT_2022232.Models;
+using JFL7XU_HFT_2022232.WpfClient.Services.OwnerServ;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -10,12 +10,24 @@
     <Compile Update="OwnerEditorWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Services\OwnerServ\OwnerCreateWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Services\OwnerServ\OwnerUpdateWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="OwnerEditorWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Services\OwnerServ\OwnerCreateWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Services\OwnerServ\OwnerUpdateWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
