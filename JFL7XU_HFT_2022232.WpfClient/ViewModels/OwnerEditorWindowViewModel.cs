@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
 {
@@ -96,6 +97,14 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
         {
             Owners.Delete((int)selectedID);
             SelectedOwner = null;
+        }
+        [RelayCommand]
+        public void SelectByID(TextBox InputID)
+        {
+            int id = int.Parse(InputID.Text);
+            var queued = Owners.Where(t => t.ID.Equals(id)).FirstOrDefault();
+            if (queued != null) SelectedOwner = queued; else MessageBox.Show("No record on this ID!");
+            InputID.Text = null;
         }
 
         [RelayCommand]

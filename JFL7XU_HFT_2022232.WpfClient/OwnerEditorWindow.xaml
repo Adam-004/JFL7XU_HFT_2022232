@@ -69,12 +69,17 @@
                     <Label DockPanel.Dock="Top" Grid.Column="2" Grid.Row="1" FontSize="15" HorizontalContentAlignment="Center" Content="{Binding SelectedAge}"/>
                 </Grid>
             </Border>
-            <Button DockPanel.Dock="Top" Content="Create new Owner"  FontSize="15" Command="{Binding CreateCommand}" Margin="0,0,5,0"/>
-            <Button DockPanel.Dock="Top" Content="Update Owner"  FontSize="15" Command="{Binding EditCommand}" Margin="0,0,5,0"/>
-            <Button DockPanel.Dock="Top" Content="Delete Owner"  FontSize="15" Command="{Binding DeleteCommand}" Margin="0,0,5,0"/>
+            <Button DockPanel.Dock="Top" Content="Create new Owner"  FontSize="15" Command="{Binding CreateCommand}" Height="30" Margin="0,0,5,0"/>
+            <Button DockPanel.Dock="Top" Content="Update Owner"  FontSize="15" Command="{Binding EditCommand}" Height="30" Margin="0,0,5,0"/>
+            <Button DockPanel.Dock="Top" Content="Delete Owner"  FontSize="15" Command="{Binding DeleteCommand}" Height="30" Margin="0,0,5,0"/>
+            <DockPanel DockPanel.Dock="Top">
+                <Label DockPanel.Dock="Left" FontWeight="Bold" FontSize="15" Content="ID to select:"/>
+                <TextBox x:Name="InputID" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" DockPanel.Dock="Left" Width="40"/>
+                <Button  Content="Select By ID"  FontSize="15" Command="{Binding SelectByIDCommand}" CommandParameter="{Binding ElementName=InputID}" Height="30" Margin="5,0,5,0"/>
+            </DockPanel>
             <Label Height="5" DockPanel.Dock="Bottom" Margin="0,0,5,0"/>
             <Button Content="Exit" DockPanel.Dock="Bottom"   FontSize="15" Command="{Binding TerminateCommand}" CommandParameter="{Binding ElementName=ThisWindow}" Margin="0,0,5,0"/>
-            <Button DockPanel.Dock="Bottom" Content="Return"    FontSize="15" Command="{Binding ReturnCommand}" CommandParameter="{Binding ElementName=ThisWindow}" Margin="0,0,5,0"/>
+            <Button DockPanel.Dock="Bottom" Content="Return" FontSize="15" Command="{Binding ReturnCommand}" CommandParameter="{Binding ElementName=ThisWindow}" Margin="0,0,5,0"/>
             <Label Height="40" DockPanel.Dock="Bottom" />
         </DockPanel>
     </Grid>

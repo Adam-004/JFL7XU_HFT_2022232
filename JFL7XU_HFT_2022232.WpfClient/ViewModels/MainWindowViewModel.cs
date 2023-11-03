@@ -13,7 +13,7 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
         [RelayCommand]
         public void EditOwners(Window window)
         {
-            var OwnerWindow = new Window();
+            var OwnerWindow = new OwnerEditorWindow();
             OwnerWindow.Show();
             window.Close();
         }
