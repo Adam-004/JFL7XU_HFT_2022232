@@ -12,4 +12,8 @@
     <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JFL7XU_HFT_2022232.Models\JFL7XU_HFT_2022232.Models.csproj" />
+  </ItemGroup>
+
 </Project>
