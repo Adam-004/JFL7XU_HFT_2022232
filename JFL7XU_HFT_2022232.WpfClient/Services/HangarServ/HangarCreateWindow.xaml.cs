@@ -28,12 +28,12 @@ namespace JFL7XU_HFT_2022232.WpfClient.Services.HangarServ
         }
         private void CreateClick(object sender, RoutedEventArgs e)
         {
-            bool ParseOkId = false;
+            bool ParseOkID = false;
             bool ParseOkOID = false;
             if (InputID.Text != "")
             {
-                ParseOkId = int.TryParse(InputID.Text.ToString(), out int id);
-                if (ParseOkId)
+                ParseOkID = int.TryParse(InputID.Text.ToString(), out int id);
+                if (ParseOkID)
                 {
                     hangar.Id = id;
                 }
@@ -47,12 +47,12 @@ namespace JFL7XU_HFT_2022232.WpfClient.Services.HangarServ
                 ParseOkOID = int.TryParse(InputOwnerID.Text.ToString(), out int id);
                 if (ParseOkOID)
                 {
-                    hangar.Id = id;
+                    hangar.OwnerID = id;
                 }
                 else MessageBox.Show("OwnerID must be a number!");
             }
             else MessageBox.Show("OwnerID was null!");
-            if (InputID.Text != "" && InputLocation.Text != "" && InputName.Text != "" && InputOwnerID.Text != "" && ParseOkId && ParseOkOID) this.DialogResult = true;
+            if (InputID.Text != "" && InputLocation.Text != "" && InputName.Text != "" && InputOwnerID.Text != "" && ParseOkID && ParseOkOID) this.DialogResult = true;
         }
     }
 }
