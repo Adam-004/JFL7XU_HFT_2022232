@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using JFL7XU_HFT_2022232.Models;
-using JFL7XU_HFT_2022232.WpfClient.Services.OwnerServ;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
+using JFL7XU_HFT_2022232.WpfClient.Services.HangarServ;
 
 namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
 {
@@ -83,16 +83,16 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
         [RelayCommand]
         public void Create()
         {
-            var creator = new OwnerCreateService();
-            //Owner owner = creator.Create();
-            //Hangars.Add(owner);
+            var creator = new HangarCreateService();
+            Hangar hangar = creator.Create();
+            Hangars.Add(hangar);
         }
         [RelayCommand(CanExecute = nameof(IsSelectedHangarNotNull))]
         public void Edit()
         {
-            var updater = new OwnerUpdateService();
-            //var hangar = updater.Update(SelectedHangar);
-            //Hangars.Update(owner);
+            var updater = new HangarUpdateService();
+            var hangar = updater.Update(SelectedHangar);
+            Hangars.Update(hangar);
         }
         [RelayCommand(CanExecute = nameof(IsSelectedHangarNotNull))]
         public void Delete()

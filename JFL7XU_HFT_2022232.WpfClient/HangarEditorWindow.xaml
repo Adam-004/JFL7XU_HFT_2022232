@@ -10,9 +10,9 @@
     x:Name="ThisWindow"
     mc:Ignorable="d"
     Title="Hangar Editor" Height="450" Width="800">
-    <!--Window.DataContext-->
-        <!--vm:HangarEditorWindowViewModel/-->
-    <!--/Window.DataContext-->
+    <Window.DataContext>
+        <vm:HangarEditorWindowViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35" />
@@ -39,7 +39,7 @@
         <DockPanel Grid.Column="0" Grid.Row="1">
             <Border BorderBrush="Silver">
                 <ListBox ItemsSource="{Binding Hangars}" Background="GhostWhite" SelectedItem="{Binding SelectedHangar}" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="5">
-                    <models:Hangar Id="1" Name="Self-Land" Location="Oberon" OwnerID="4"/>
+                    <!--models:Hangar Id="1" Name="Self-Land" Location="Oberon" OwnerID="4"/-->
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Border BorderThickness="1" BorderBrush="Black">
