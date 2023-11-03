@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JFL7XU_HFT_2022232.WpfClient"
         xmlns:vm="clr-namespace:JFL7XU_HFT_2022232.WpfClient.ViewModels"
+        WindowStartupLocation="CenterScreen"
         x:Name="ThisWindow"
         mc:Ignorable="d"
         Title="Main Window" Height="200" Width="270">
@@ -17,7 +18,7 @@
             <Button Padding="5" DockPanel.Dock="Top" Content="Edit Starship table"   FontSize="15" Command="{Binding }" CommandParameter="{Binding ElementName=ThisWindow}"/>
             <Button Padding="5" DockPanel.Dock="Top" Content="Edit Hangar table"     FontSize="15" Command="{Binding }" CommandParameter="{Binding ElementName=ThisWindow}"/>
             <Button Padding="5" DockPanel.Dock="Top" Content="Other CRUD Methods"    FontSize="15" Command="{Binding }" CommandParameter="{Binding ElementName=ThisWindow}"/>
-            <Button DockPanel.Dock="Bottom" Content="Exit" FontSize="15" Command="{Binding TerminateCommand}" CommandParameter="{Binding ElementName=ThisWindow}"/>
+            <Button HorizontalAlignment="Right" Width="50" DockPanel.Dock="Bottom" Content="Exit" FontSize="15" Command="{Binding TerminateCommand}" CommandParameter="{Binding ElementName=ThisWindow}" Margin="0,0,5,5"/>
             <Label DockPanel.Dock="Bottom"/>
         </DockPanel>
     </Grid>
