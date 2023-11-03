@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using JFL7XU_HFT_2022232.Models;
 using JFL7XU_HFT_2022232.WpfClient.Services.OwnerServ;
 using System;
@@ -8,35 +7,37 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
+using System.Windows;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
 {
-    partial class OwnerEditorWindowViewModel : ObservableRecipient
+    partial class HangarEditorWindowViewModel : ObservableRecipient
     {
-        private Owner selectedOwner;
+        private Hangar selectedHangar;
         private int? selectedID;
         private string selectedName = " ";
-        private int? selectedAge;
-        public Owner SelectedOwner
+        private string selectedLocation;
+        private int? selectedOwnerID;
+        public Hangar SelectedHangar
         {
-            get => selectedOwner;
+            get => selectedHangar;
             set
             {
                 var tmp = value;
-                SetProperty(ref selectedOwner, value);
+                SetProperty(ref selectedHangar, value);
                 if (tmp != null)
                 {
-                    SelectedID = tmp.ID;
+                    SelectedID = tmp.Id;
                     SelectedName = tmp.Name;
-                    SelectedAge = tmp.Age;
+                    SelectedLocation = tmp.Location;
                 }
                 else
                 {
                     SelectedID = null;
                     SelectedName = " ";
-                    SelectedAge = null;
+                    SelectedLocation = null;
                 }
                 EditCommand.NotifyCanExecuteChanged();
                 DeleteCommand.NotifyCanExecuteChanged();
@@ -52,12 +53,17 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
             get => selectedName;
             set => SetProperty(ref selectedName, value);
         }
-        public int? SelectedAge
+        public string SelectedLocation
         {
-            get => selectedAge;
-            set => SetProperty(ref selectedAge, value);
+            get => selectedLocation;
+            set => SetProperty(ref selectedLocation, value);
         }
-        public RestCollection<Owner> Owners { get; set; }
+        public int? SelectedOwnerID
+        {
+            get => selectedOwnerID;
+            set => SetProperty(ref selectedOwnerID, value);
+        }
+        public RestCollection<Hangar> Hangars { get; set; }
         public static bool IsInDesignMode
         {
             get
@@ -66,47 +72,40 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
                 return (bool)DependencyPropertyDescriptor.FromProperty(prop, typeof(FrameworkElement)).Metadata.DefaultValue;
             }
         }
-        public OwnerEditorWindowViewModel()
+        public HangarEditorWindowViewModel()
         {
             if (!IsInDesignMode)
             {
-                Owners = new RestCollection<Owner>("http://localhost:40567/", "Owner");
+                Hangars = new RestCollection<Hangar>("http://localhost:40567/", "Hangar");
             }
         }
-        private bool IsSelectedOwnerNotNull()
-        {
-            if (SelectedOwner == null) { return false; }
-            return true;
-        }
+        private bool IsSelectedHangarNotNull() {if (SelectedHangar == null) { return false; }return true;}
         [RelayCommand]
         public void Create()
         {
             var creator = new OwnerCreateService();
-            Owner owner = creator.Create();
-            Owners.Add(owner);
+            //Owner owner = creator.Create();
+            //Hangars.Add(owner);
         }
-        [RelayCommand(CanExecute = nameof(IsSelectedOwnerNotNull))]
+        [RelayCommand(CanExecute = nameof(IsSelectedHangarNotNull))]
         public void Edit()
         {
             var updater = new OwnerUpdateService();
-            var owner = updater.Update(SelectedOwner);
-            Owners.Update(owner);
+            //var hangar = updater.Update(SelectedHangar);
+            //Hangars.Update(owner);
         }
-        [RelayCommand(CanExecute = nameof(IsSelectedOwnerNotNull))]
+        [RelayCommand(CanExecute = nameof(IsSelectedHangarNotNull))]
         public void Delete()
         {
-            Owners.Delete((int)selectedID);
-            SelectedOwner = null;
+            Hangars.Delete((int)selectedID);
+            SelectedHangar = null;
         }
         [RelayCommand]
         public void SelectByID(TextBox InputID)
         {
-            if (InputID.Text is null)
-            {
-                int id = int.Parse(InputID.Text);
-                var queued = Owners.Where(t => t.ID.Equals(id)).FirstOrDefault();
-                if (queued != null) SelectedOwner = queued; else MessageBox.Show("No record on this ID!");
-            }
+            int id = int.Parse(InputID.Text);
+            var queued = Hangars.Where(t => t.Id.Equals(id)).FirstOrDefault();
+            if (queued != null) SelectedHangar = queued; else MessageBox.Show("No record on this ID!");
             InputID.Text = null;
         }
         [RelayCommand]

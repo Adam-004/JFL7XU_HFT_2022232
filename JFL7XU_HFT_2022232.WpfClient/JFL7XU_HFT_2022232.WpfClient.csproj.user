@@ -7,7 +7,16 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="HangarEditorWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="OwnerEditorWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Services\HangarServ\HangarCreateWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Services\HangarServ\HangarUpdateWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Services\OwnerServ\OwnerCreateWindow.xaml.cs">
@@ -18,10 +27,19 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="HangarEditorWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="OwnerEditorWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Services\HangarServ\HangarCreateWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Services\HangarServ\HangarUpdateWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Services\OwnerServ\OwnerCreateWindow.xaml">
