@@ -36,6 +36,8 @@ namespace JFL7XU_HFT_2022232.Endpoint
             services.AddTransient<IHangarLogic, HangarLogic>();
             services.AddTransient<INonCrudLogic, NonCrudLogic>();
 
+            services.AddSignalR();
+
             services.AddControllers();
             services.AddSwaggerGen(s =>
             {
@@ -70,6 +72,7 @@ namespace JFL7XU_HFT_2022232.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignaalRHub>("/hub");
             });
         }
     }
