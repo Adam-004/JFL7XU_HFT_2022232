@@ -18,13 +18,6 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
             window.Close();
         }
         [RelayCommand]
-        public void EditHangars(Window window)
-        {
-            var HangarWindow = new HangarEditorWindow();
-            HangarWindow.Show();
-            window.Close();
-        }
-        [RelayCommand]
         public void Terminate(Window window) { window.Close(); }
         public MainWindowViewModel() { }
     }
