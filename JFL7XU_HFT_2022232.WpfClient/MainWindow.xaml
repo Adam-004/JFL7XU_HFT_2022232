@@ -4,9 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JFL7XU_HFT_2022232.WpfClient"
+        xmlns:vm="clr-namespace:JFL7XU_HFT_2022232.WpfClient.ViewModels"
+        x:Name="ThisWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Main Window" Height="200" Width="270">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
     <Grid>
-
+        <StackPanel>
+            <Button Content="Edit Owner table"      FontSize="15" Command="{Binding EditOwnersCommand}" CommandParameter="{Binding ElementName=ThisWindow}"/>
+            <Button Content="Edit Starship table"   FontSize="15" Command="{Binding }" CommandParameter="{Binding ElementName=ThisWindow}"/>
+            <Button Content="Edit Hangar table"     FontSize="15" Command="{Binding }" CommandParameter="{Binding ElementName=ThisWindow}"/>
+            <Button Content="Other CRUD Methods"    FontSize="15" Command="{Binding }" CommandParameter="{Binding ElementName=ThisWindow}"/>
+            <Label/>
+            <Button Content="Exit" FontSize="15" Command="{Binding TerminateCommand}" CommandParameter="{Binding ElementName=ThisWindow}"/>
+        </StackPanel>
     </Grid>
 </Window>
