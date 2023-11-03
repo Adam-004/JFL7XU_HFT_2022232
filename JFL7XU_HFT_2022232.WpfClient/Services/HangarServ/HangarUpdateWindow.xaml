@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:JFL7XU_HFT_2022232.WpfClient.Services.HangarServ"
             WindowStartupLocation="CenterScreen"
     mc:Ignorable="d"
-    Title="Updater" Height="250" Width="300">
+    Title="Updater" Height="260" Width="300">
     <DockPanel>
         <Label DockPanel.Dock="Top" Background="LightSteelBlue" Content="Update" HorizontalContentAlignment="Center" BorderThickness="1" BorderBrush="Black" FontWeight="Bold"/>
         <Grid DockPanel.Dock="Top">
@@ -23,13 +23,13 @@
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
                 <Label Content="Values" Background="LightGray" HorizontalContentAlignment="Center" BorderThickness="1" BorderBrush="Black" FontWeight="Bold"/>
-                <TextBox x:Name="InputID" Text="" BorderThickness="1" VerticalContentAlignment="Center" BorderBrush="Gray" Height="30"/>
+                <Label x:Name="ShowID" Foreground="Silver" Content="" BorderThickness="1" VerticalContentAlignment="Center" BorderBrush="Gray" Height="30"/>
                 <TextBox x:Name="InputName" Text="" BorderThickness="1" VerticalContentAlignment="Center" BorderBrush="Gray" Height="30"/>
                 <TextBox x:Name="InputLocation" Text="" BorderThickness="1" VerticalContentAlignment="Center" BorderBrush="Gray" Height="30"/>
                 <TextBox x:Name="InputOwnerID" Text="" BorderThickness="1" VerticalContentAlignment="Center" BorderBrush="Gray" Height="30"/>
             </StackPanel>
         </Grid>
-        <Button DockPanel.Dock="Bottom" x:Name="Update" Content="Update" FontWeight="Bold" Height="50" Click="Update_Click"/>
+        <Button DockPanel.Dock="Bottom" x:Name="Update" Content="Update" FontWeight="Bold" Height="50" Click="UpdateClick"/>
         <Label DockPanel.Dock="Bottom"/>
     </DockPanel>
 </Window>
