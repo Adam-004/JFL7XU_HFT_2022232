@@ -1,6 +1,8 @@
-﻿using System;
+﻿using JFL7XU_HFT_2022232.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Printing;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,9 +21,38 @@ namespace JFL7XU_HFT_2022232.WpfClient.Services.HangarServ
     /// </summary>
     public partial class HangarCreateWindow : Window
     {
+        public Hangar hangar { get; set; } = new();
         public HangarCreateWindow()
         {
             InitializeComponent();
+        }
+        private void CreateClick(object sender, RoutedEventArgs e)
+        {
+            bool ParseOkId = false;
+            bool ParseOkOID = false;
+            if (InputID.Text != "")
+            {
+                ParseOkId = int.TryParse(InputID.Text.ToString(), out int id);
+                if (ParseOkId)
+                {
+                    hangar.Id = id;
+                }
+                else MessageBox.Show("ID must be a number!");
+            }
+            else MessageBox.Show("ID was null!");
+            if (InputName.Text != "") hangar.Name = InputName.Text.ToString(); else MessageBox.Show("Name was null!");
+            if (InputLocation.Text != "") hangar.Location = InputLocation.Text.ToString(); else MessageBox.Show("Location was null!");
+            if (InputOwnerID.Text != "")
+            {
+                ParseOkOID = int.TryParse(InputOwnerID.Text.ToString(), out int id);
+                if (ParseOkOID)
+                {
+                    hangar.Id = id;
+                }
+                else MessageBox.Show("OwnerID must be a number!");
+            }
+            else MessageBox.Show("OwnerID was null!");
+            if (InputID.Text != "" && InputLocation.Text != "" && InputName.Text != "" && InputOwnerID.Text != "" && ParseOkId && ParseOkOID) this.DialogResult = true;
         }
     }
 }
