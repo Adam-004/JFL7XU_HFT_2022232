@@ -1,0 +1,39 @@
+﻿<Window x:Class="JFL7XU_HFT_2022232.WpfClient.Services.StarshipServ.StarshipCreateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JFL7XU_HFT_2022232.WpfClient.Services.StarshipServ"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        Title="Create" Height="310" Width="300">
+    <DockPanel>
+        <Label DockPanel.Dock="Top" Background="LightSteelBlue" Content="Creating new Starship" HorizontalContentAlignment="Center" BorderThickness="1" BorderBrush="Black" FontWeight="Bold"/>
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
+                <Label Content="Properties" Background="LightGray" HorizontalContentAlignment="Center" BorderThickness="1" BorderBrush="Black" FontWeight="Bold"/>
+                <Label Content="ID:" BorderThickness="1" BorderBrush="Gray" Background="Azure" Height="30"/>
+                <Label Content="Name:" BorderThickness="1" BorderBrush="Gray" Background="Azure" Height="30"/>
+                <Label Content="Size:" BorderThickness="1" BorderBrush="Gray" Background="Azure" Height="30"/>
+                <Label Content="Year of manufacture:" BorderThickness="1" BorderBrush="Gray" Background="Azure" Height="30"/>
+                <Label Content="Type:" BorderThickness="1" BorderBrush="Gray" Background="Azure" Height="30"/>
+                <Label Content="OwnerID:" BorderThickness="1" BorderBrush="Gray" Background="Azure" Height="30"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
+                <Label Content="Values" Background="LightGray" HorizontalContentAlignment="Center" BorderThickness="1" BorderBrush="Black" FontWeight="Bold"/>
+                <TextBox x:Name="InputID" Text="" BorderThickness="1" VerticalContentAlignment="Center" BorderBrush="Gray" Height="30"/>
+                <TextBox x:Name="InputName" Text="" BorderThickness="1" VerticalContentAlignment="Center" BorderBrush="Gray" Height="30"/>
+                <TextBox x:Name="InputSize" Text="" BorderThickness="1" VerticalContentAlignment="Center" BorderBrush="Gray" Height="30"/>
+                <TextBox x:Name="InputYOM" Text="" BorderThickness="1" VerticalContentAlignment="Center" BorderBrush="Gray" Height="30"/>
+                <ComboBox x:Name="InputType" Text="" BorderThickness="1" VerticalContentAlignment="Center" BorderBrush="Gray" Height="30" />
+                <TextBox x:Name="InputOwnerID" Text="" BorderThickness="1" VerticalContentAlignment="Center" BorderBrush="Gray" Height="30"/>
+            </StackPanel>
+        </Grid>
+        <Button DockPanel.Dock="Bottom" x:Name="Create" Content="Create" FontWeight="Bold" Height="50" Click="CreateClick"/>
+        <Label DockPanel.Dock="Bottom"/>
+    </DockPanel>
+</Window>
