@@ -1,4 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using JFL7XU_HFT_2022232.WpfClient.Services.HangarServ;
+using JFL7XU_HFT_2022232.WpfClient.Services.OwnerServ;
+using JFL7XU_HFT_2022232.WpfClient.Services.StarshipServ;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +13,14 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
 {
     partial class MainWindowViewModel
     {
+        StarshipService shipService = new();
+        OwnerService ownerService = new();
+        HangarService hangarService = new();
         [RelayCommand]
         public void EditOwners(Window window)
         {
             var OwnerWindow = new OwnerEditorWindow();
+            OwnerWindow.DataContext = new OwnerEditorWindowViewModel(ownerService);
             OwnerWindow.Show();
             window.Close();
         }
@@ -21,6 +28,7 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
         public void EditHangars(Window window)
         {
             var HangarWindow = new HangarEditorWindow();
+            HangarWindow.DataContext = new HangarEditorWindowViewModel(hangarService);
             HangarWindow.Show();
             window.Close();
         }
@@ -28,6 +36,7 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
         public void EditStarships(Window window)
         {
             var ShipWindow = new StarshipEditorWindow();
+            ShipWindow.DataContext = new StarshipEditorWindowViewModel(shipService);
             ShipWindow.Show();
             window.Close();
         }

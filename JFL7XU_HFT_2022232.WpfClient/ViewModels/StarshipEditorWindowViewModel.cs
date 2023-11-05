@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using JFL7XU_HFT_2022232.WpfClient.Services.StarshipServ;
+using JFL7XU_HFT_2022232.WpfClient.Services.Interfaces;
 
 namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
 {
@@ -20,6 +21,7 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
         private string selectedName = " ";
         private int? selectedSize;
         private string selectedType;
+        private StarshipServiceInterface StarshipServ;
         public Starship SelectedStarship
         {
             get => selectedStarship;
@@ -75,12 +77,13 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
                 return (bool)DependencyPropertyDescriptor.FromProperty(prop, typeof(FrameworkElement)).Metadata.DefaultValue;
             }
         }
-        public StarshipEditorWindowViewModel()
+        public StarshipEditorWindowViewModel(StarshipServiceInterface service)
         {
             if (!IsInDesignMode)
             {
                 Starships = new RestCollection<Starship>("http://localhost:40567/", "Starship");
             }
+            StarshipServ = service;
         }
         private bool IsSelectedOwnerNotNull()
         {
@@ -90,15 +93,15 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
         [RelayCommand]
         public void Create()
         {
-            var creator = new StarshipCreateService();
-            Starship ship = creator.Create();
+            StarshipServ.Create();
+            var ship = StarshipServ.Starship;
             Starships.Add(ship);
         }
         [RelayCommand(CanExecute = nameof(IsSelectedOwnerNotNull))]
         public void Edit()
         {
-            var updater = new StarshipUpdateService();
-            var ship = updater.Update(SelectedStarship);
+            StarshipServ.Update(SelectedStarship);
+            var ship = StarshipServ.Starship;
             Starships.Update(ship);
         }
         [RelayCommand(CanExecute = nameof(IsSelectedOwnerNotNull))]
@@ -110,7 +113,7 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
         [RelayCommand]
         public void SelectByID(TextBox InputID)
         {
-            if (InputID.Text != null)
+            if (InputID.Text != "")
             {
                 int id = int.Parse(InputID.Text);
                 var queued = Starships.Where(t => t.ID.Equals(id)).FirstOrDefault();

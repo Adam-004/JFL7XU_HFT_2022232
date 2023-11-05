@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using JFL7XU_HFT_2022232.WpfClient.Services.HangarServ;
+using JFL7XU_HFT_2022232.WpfClient.Services.Interfaces;
 
 namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
 {
@@ -20,6 +21,7 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
         private string selectedName = " ";
         private string selectedLocation;
         private int? selectedOwnerID;
+        private HangarServiceInterface HangarServ;
         public Hangar SelectedHangar
         {
             get => selectedHangar;
@@ -72,26 +74,27 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
                 return (bool)DependencyPropertyDescriptor.FromProperty(prop, typeof(FrameworkElement)).Metadata.DefaultValue;
             }
         }
-        public HangarEditorWindowViewModel()
+        public HangarEditorWindowViewModel(HangarServiceInterface service)
         {
             if (!IsInDesignMode)
             {
                 Hangars = new RestCollection<Hangar>("http://localhost:40567/", "Hangar");
             }
+            HangarServ = service;
         }
         private bool IsSelectedHangarNotNull() {if (SelectedHangar == null) { return false; }return true;}
         [RelayCommand]
         public void Create()
         {
-            var creator = new HangarCreateService();
-            Hangar hangar = creator.Create();
+            HangarServ.Create();
+            var hangar = HangarServ.Hangar;
             Hangars.Add(hangar);
         }
         [RelayCommand(CanExecute = nameof(IsSelectedHangarNotNull))]
         public void Edit()
         {
-            var updater = new HangarUpdateService();
-            var hangar = updater.Update(SelectedHangar);
+            HangarServ.Update(SelectedHangar);
+            var hangar = HangarServ.Hangar;
             Hangars.Update(hangar);
         }
         [RelayCommand(CanExecute = nameof(IsSelectedHangarNotNull))]
@@ -103,9 +106,12 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
         [RelayCommand]
         public void SelectByID(TextBox InputID)
         {
-            int id = int.Parse(InputID.Text);
-            var queued = Hangars.Where(t => t.Id.Equals(id)).FirstOrDefault();
-            if (queued != null) SelectedHangar = queued; else MessageBox.Show("No record on this ID!");
+            if (InputID.Text != "")
+            {
+                int id = int.Parse(InputID.Text);
+                var queued = Hangars.Where(t => t.Id.Equals(id)).FirstOrDefault();
+                if (queued != null) SelectedHangar = queued; else MessageBox.Show("No record on this ID!");
+            }
             InputID.Text = null;
         }
         [RelayCommand]

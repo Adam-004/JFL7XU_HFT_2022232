@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using JFL7XU_HFT_2022232.Models;
+using JFL7XU_HFT_2022232.WpfClient.Services.HangarServ;
+using JFL7XU_HFT_2022232.WpfClient.Services.Interfaces;
 using JFL7XU_HFT_2022232.WpfClient.Services.OwnerServ;
 using System;
 using System.Collections.Generic;
@@ -19,6 +21,7 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
         private int? selectedID;
         private string selectedName = " ";
         private int? selectedAge;
+        private OwnerServiceInterface OwnerServ;
         public Owner SelectedOwner
         {
             get => selectedOwner;
@@ -66,12 +69,13 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
                 return (bool)DependencyPropertyDescriptor.FromProperty(prop, typeof(FrameworkElement)).Metadata.DefaultValue;
             }
         }
-        public OwnerEditorWindowViewModel()
+        public OwnerEditorWindowViewModel(OwnerServiceInterface service)
         {
             if (!IsInDesignMode)
             {
                 Owners = new RestCollection<Owner>("http://localhost:40567/", "Owner");
             }
+            OwnerServ = service;
         }
         private bool IsSelectedOwnerNotNull()
         {
@@ -81,15 +85,15 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
         [RelayCommand]
         public void Create()
         {
-            var creator = new OwnerCreateService();
-            Owner owner = creator.Create();
+            OwnerServ.Create();
+            var owner = OwnerServ.Owner;
             Owners.Add(owner);
         }
         [RelayCommand(CanExecute = nameof(IsSelectedOwnerNotNull))]
         public void Edit()
         {
-            var updater = new OwnerUpdateService();
-            var owner = updater.Update(SelectedOwner);
+            OwnerServ.Update(SelectedOwner);
+            var owner = OwnerServ.Owner;
             Owners.Update(owner);
         }
         [RelayCommand(CanExecute = nameof(IsSelectedOwnerNotNull))]
@@ -101,7 +105,7 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
         [RelayCommand]
         public void SelectByID(TextBox InputID)
         {
-            if (InputID.Text is not null)
+            if (InputID.Text != "")
             {
                 int id = int.Parse(InputID.Text);
                 var queued = Owners.Where(t => t.ID.Equals(id)).FirstOrDefault();
