@@ -25,6 +25,13 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
             window.Close();
         }
         [RelayCommand]
+        public void EditStarships(Window window)
+        {
+            var ShipWindow = new StarshipEditorWindow();
+            ShipWindow.Show();
+            window.Close();
+        }
+        [RelayCommand]
         public void Terminate(Window window) { window.Close(); }
         public MainWindowViewModel() { }
     }
