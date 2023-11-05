@@ -34,10 +34,30 @@ namespace JFL7XU_HFT_2022232.WpfClient.Services.OwnerServ
         }
         private void UpdateClick(object sender, RoutedEventArgs e)
         {
-            if (InputID.Text != "") Updated.ID = int.Parse(InputID.Text.ToString()); else MessageBox.Show("ID was null!");
+            bool ParseOkID = false;
+            bool ParseOkAge = false;
+            if (InputID.Text != "")
+            {
+                ParseOkID = int.TryParse(InputID.Text.ToString(), out int id);
+                if (ParseOkID)
+                {
+                    Updated.ID = id;
+                }
+                else MessageBox.Show("ID must be a number!");
+            }
+            else MessageBox.Show("ID was null!");
             if (InputName.Text != "") Updated.Name = InputName.Text.ToString(); else MessageBox.Show("Name was null!");
-            if (InputAge.Text != "") Updated.Age = int.Parse(InputAge.Text.ToString()); else MessageBox.Show("Age was null!");
-            if (InputID.Text != "" && InputName.Text != "" && InputAge.Text != "") this.DialogResult = true;
+            if (InputAge.Text != "")
+            {
+                ParseOkAge = int.TryParse(InputAge.Text.ToString(), out int age);
+                if (ParseOkAge)
+                {
+                    Updated.Age = age;
+                }
+                else MessageBox.Show("ID must be a number!");
+            }
+            else MessageBox.Show("ID was null!");
+            if (InputID.Text != "" && InputName.Text != "" && InputAge.Text != "" && ParseOkID && ParseOkAge) this.DialogResult = true;
         }
     }
 }

@@ -27,10 +27,30 @@ namespace JFL7XU_HFT_2022232.WpfClient.Services.OwnerServ
         }
         private void CreateClick(object sender, RoutedEventArgs e)
         {
-            if (InputID.Text != "") owner.ID = int.Parse(InputID.Text.ToString()); else MessageBox.Show("ID was null!");
+            bool ParseOkID = false;
+            bool ParseOkAge = false;
+            if (InputID.Text != "")
+            {
+                ParseOkID = int.TryParse(InputID.Text.ToString(), out int id);
+                if (ParseOkID)
+                {
+                    owner.ID = id;
+                }
+                else MessageBox.Show("ID must be a number!");
+            }
+            else MessageBox.Show("ID was null!");
             if (InputName.Text != "") owner.Name = InputName.Text.ToString(); else MessageBox.Show("Name was null!");
-            if (InputAge.Text != "") owner.Age = int.Parse(InputAge.Text.ToString()); else MessageBox.Show("Age was null!");
-            if (InputID.Text != "" && InputName.Text != "" && InputAge.Text != "") this.DialogResult = true;
+            if (InputAge.Text != "")
+            {
+                ParseOkAge = int.TryParse(InputAge.Text.ToString(), out int age);
+                if (ParseOkAge)
+                {
+                    owner.Age = age;
+                }
+                else MessageBox.Show("ID must be a number!");
+            }
+            else MessageBox.Show("ID was null!");
+            if (InputID.Text != "" && InputName.Text != "" && InputAge.Text != "" &&ParseOkID && ParseOkAge) this.DialogResult = true;
         }
     }
 }
