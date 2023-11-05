@@ -25,6 +25,15 @@
     <Compile Update="Services\OwnerServ\OwnerUpdateWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Services\StarshipServ\StarshipCreateWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Services\StarshipServ\StarshipUpdateWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="StarshipEditorWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="HangarEditorWindow.xaml">
@@ -46,6 +55,15 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Services\OwnerServ\OwnerUpdateWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Services\StarshipServ\StarshipCreateWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Services\StarshipServ\StarshipUpdateWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="StarshipEditorWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
