@@ -22,7 +22,7 @@
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
                 <Label Content="Values" Background="LightGray" HorizontalContentAlignment="Center" BorderThickness="1" BorderBrush="Black" FontWeight="Bold"/>
-                <TextBox x:Name="InputID" Text="" BorderThickness="1" VerticalContentAlignment="Center" BorderBrush="Gray" Height="30"/>
+                <Label x:Name="ShowID" Content="" Foreground="Silver" BorderThickness="1" VerticalContentAlignment="Center" BorderBrush="Gray" Height="30"/>
                 <TextBox x:Name="InputName" Text="" BorderThickness="1" VerticalContentAlignment="Center" BorderBrush="Gray" Height="30"/>
                 <TextBox x:Name="InputAge" Text="" BorderThickness="1" VerticalContentAlignment="Center" BorderBrush="Gray" Height="30"/>
             </StackPanel>
