@@ -10,9 +10,6 @@
         x:Name="ThisWindow"
         mc:Ignorable="d"
         Title="Starship Editor" Height="450" Width="1000"> 
-    <Window.DataContext>
-        <vm:StarshipEditorWindowViewModel/>
-    </Window.DataContext>
     <Window.Resources>
         <helpers:EnumToStringConverter x:Key="EnumStringConvert"/>
     </Window.Resources>
