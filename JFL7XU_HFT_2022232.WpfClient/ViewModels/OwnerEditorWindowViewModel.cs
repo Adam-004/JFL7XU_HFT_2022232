@@ -101,7 +101,7 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
         [RelayCommand]
         public void SelectByID(TextBox InputID)
         {
-            if (InputID.Text is null)
+            if (InputID.Text is not null)
             {
                 int id = int.Parse(InputID.Text);
                 var queued = Owners.Where(t => t.ID.Equals(id)).FirstOrDefault();
