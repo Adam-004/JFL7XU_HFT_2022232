@@ -41,6 +41,14 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
             window.Close();
         }
         [RelayCommand]
+        public void Query(Window window)
+        {
+            //var QueryWindow = new QueryWindow();
+            //QueryWindow.DataContext = new QueryWindowViewModel(shipService);
+            //QueryWindow.Show();
+            //window.Close();
+        }
+        [RelayCommand]
         public void Terminate(Window window) { window.Close(); }
         public MainWindowViewModel() { }
     }
