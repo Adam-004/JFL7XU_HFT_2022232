@@ -38,7 +38,7 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Border BorderThickness="1" BorderBrush="Black">
-                                
+                                <TextBlock Text="{Binding Name}"/>
                             </Border>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -133,7 +133,7 @@
                     <Label DockPanel.Dock="Right" BorderBrush="Gray" BorderThickness="1"/>
                 </DockPanel>
             </Grid>
-            <Button DockPanel.Dock="Top" Content="List Report"  FontSize="15" Command="{Binding}" Height="30" Margin="0,0,0,5"/>
+            <Button DockPanel.Dock="Top" Content="List Report"  FontSize="15" Command="{Binding ReportCommand}" Height="30" Margin="0,0,0,5"/>
             <Label Height="5" DockPanel.Dock="Bottom"/>
             <Button Content="Exit" DockPanel.Dock="Bottom" HorizontalAlignment="Right" Width="100" FontSize="15" Command="{Binding TerminateCommand}" CommandParameter="{Binding ElementName=ThisWindow}"/>
             <Button DockPanel.Dock="Bottom" Content="Return" HorizontalAlignment="Right" Width="100" FontSize="15" Command="{Binding ReturnCommand}" CommandParameter="{Binding ElementName=ThisWindow}" Margin="0,0,0,10"/>
