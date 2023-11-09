@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static JFL7XU_HFT_2022232.WpfClient.ViewModels.QueryWindowViewModel;
 
 namespace JFL7XU_HFT_2022232.WpfClient
 {

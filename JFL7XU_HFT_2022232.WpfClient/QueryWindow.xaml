@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JFL7XU_HFT_2022232.WpfClient"
         xmlns:vm="clr-namespace:JFL7XU_HFT_2022232.WpfClient.ViewModels"
+        xmlns:models="clr-namespace:JFL7XU_HFT_2022232.Models;assembly=JFL7XU_HFT_2022232.Models"
         WindowStartupLocation="CenterScreen"
         x:Name="ThisWindow"
         mc:Ignorable="d"
-        Title="Query" Height="450" Width="800">
+        Title="Query" Height="450" Width="950">
     <Window.DataContext>
         <vm:QueryWindowViewModel/>
     </Window.DataContext>
@@ -18,126 +19,97 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
         <Border Grid.Row="0" Grid.ColumnSpan="2" Background="Black" BorderBrush="Aqua" BorderThickness="1"/>
         <Border Grid.Row="1" Grid.ColumnSpan="2" Background="LightCyan" BorderThickness="1"/>
         <Grid Grid.Row="0">
             <Label FontSize="20" HorizontalAlignment="Center" FontWeight="Bold" Foreground="AliceBlue" HorizontalContentAlignment="Center" Content="Query Box"/>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="7*"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="4*"/>
-            </Grid.RowDefinitions>
-            <Border BorderBrush="Silver" Grid.Row="0">
-                <ListBox ItemsSource="{Binding QueryDisplay}" Background="GhostWhite" SelectedItem="{Binding SelectedItem}" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="5">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Border BorderThickness="1" BorderBrush="Black">
-                                <TextBlock Text="{Binding Name}"/>
-                            </Border>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </Border>
-            <Border Grid.Row="2" BorderBrush="Gray" BorderThickness="1" Background="GhostWhite" Margin="5,0,5,0">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" DockPanel.Dock="Left" Content="Selected item:" HorizontalAlignment="Center"/>
-                    <Label x:Name="SelectedItemLabel" Grid.Column="1" DockPanel.Dock="Right" Content="Béla" HorizontalAlignment="Center"/>
-                </Grid>
-            </Border>
-            <DockPanel Grid.Row="1" Margin="5,0,0,5">
-                <Label Background="GhostWhite" VerticalContentAlignment="Center" BorderBrush="Gray" BorderThickness="1" DockPanel.Dock="Left" FontWeight="Bold" Height="30" FontSize="15" Content="ID to select:"/>
-                <TextBox x:Name="InputID" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" DockPanel.Dock="Left" Width="40"/>
-                <Button  Content="Select By ID"  FontSize="15" Command="{Binding SelectByIDCommand}" CommandParameter="{Binding ElementName=InputID}" Height="30" Margin="5,0,5,0"/>
-            </DockPanel>
-            <Border BorderBrush="Silver" Grid.Row="3">
-                <ListBox Background="GhostWhite" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="5">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Border BorderThickness="1" BorderBrush="Black">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" FontSize="15" Content="{Binding ID}"/>
-                                    <Label Grid.Column="1" FontSize="15" Content="{Binding Name}"/>
-                                    <Label Grid.Column="2" FontSize="15" HorizontalContentAlignment="Center" Content="{Binding Age}"/>
-                                </Grid>
-                            </Border>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </Border>
-        </Grid>
+        <Border BorderBrush="Silver" Grid.Row="1" Grid.Column="0">
+            <ListBox ItemsSource="{Binding QueryDisplay}" Background="GhostWhite" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="5">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="1" BorderBrush="Silver" Background="AliceBlue">
+                            <TextBlock TextWrapping="Wrap" Text="{Binding Display}"/>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Border>
         <Label Grid.Column="1" FontSize="20" Grid.Row="0" Content="Queries" FontWeight="Bold" Foreground="AliceBlue" HorizontalAlignment="Center" Margin="0,0,5,0"/>
-        <DockPanel Grid.Column="1" Grid.Row="1" Margin="5">
-            <Grid DockPanel.Dock="Top" Margin="0,0,0,5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Content="List ships that are built after given year"  FontSize="14" Command="{Binding}" Height="30"/>
-                <DockPanel Grid.Column="1">
-                    <Label Content="Year:" Width="50" HorizontalContentAlignment="Center" FontSize="14" BorderBrush="Gray" BorderThickness="1" Background="GhostWhite"/>
-                    <TextBox x:Name="InputYear"/>
-                </DockPanel>
-            </Grid>
-            <Grid DockPanel.Dock="Top" Margin="0,0,0,5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="7*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="7*"/>
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Content="List hangars that have more than |X| ships"  FontSize="9" Command="{Binding}" Height="31"/>
-                <Button Grid.Column="2" Content="List hangars that have less than |X| ships"  FontSize="9" Command="{Binding}" Height="31"/>
-                <DockPanel Grid.Column="1">
-                    <Label Content="X:"  VerticalAlignment="Stretch" HorizontalContentAlignment="Center" FontSize="14" BorderBrush="Gray" BorderThickness="1" Background="GhostWhite"/>
-                    <TextBox x:Name="InputQuantity" HorizontalAlignment="Stretch" />
-                </DockPanel>
-            </Grid>
-            <Grid DockPanel.Dock="Top" Margin="0,0,0,5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="6*"/>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="6*"/>
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Content="List owners who are older than"  FontSize="10" Command="{Binding}" Height="31"/>
-                <Button Grid.Column="2" Content="List owners who are younger than"  FontSize="10" Command="{Binding}" Height="31"/>
-                <DockPanel Grid.Column="1">
-                    <Label Content="Age:"  VerticalAlignment="Stretch" HorizontalContentAlignment="Center" FontSize="14" BorderBrush="Gray" BorderThickness="1" Background="GhostWhite"/>
-                    <TextBox x:Name="InputAge" HorizontalAlignment="Stretch" />
-                </DockPanel>
-            </Grid>
-            <Grid DockPanel.Dock="Top" Margin="0,0,0,5">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                </Grid.RowDefinitions>
-                <Button Grid.Row="0" Content="List all owners who are younger than |Year| and has more ships than |Quantity|"  FontSize="11" Command="{Binding}" Height="30"/>
-                <DockPanel Grid.Row="1" Background="Silver">
-                    <Label DockPanel.Dock="Left" Content="Year:" HorizontalContentAlignment="Center" FontSize="14" BorderBrush="Gray" BorderThickness="1" Background="GhostWhite"/>
-                    <TextBox x:Name="InputYear2" DockPanel.Dock="Left" Width="50"/>
-                    <TextBox x:Name="InputQuantity2" DockPanel.Dock="Right" Width="50"/>
-                    <Label DockPanel.Dock="Right" Content="Quantity:" HorizontalContentAlignment="Center" FontSize="14" BorderBrush="Gray" BorderThickness="1" Background="GhostWhite"/>
-                    <Label DockPanel.Dock="Right" BorderBrush="Gray" BorderThickness="1"/>
-                </DockPanel>
-            </Grid>
-            <Button DockPanel.Dock="Top" Content="List Report"  FontSize="15" Command="{Binding ReportCommand}" Height="30" Margin="0,0,0,5"/>
-            <Label Height="5" DockPanel.Dock="Bottom"/>
-            <Button Content="Exit" DockPanel.Dock="Bottom" HorizontalAlignment="Right" Width="100" FontSize="15" Command="{Binding TerminateCommand}" CommandParameter="{Binding ElementName=ThisWindow}"/>
-            <Button DockPanel.Dock="Bottom" Content="Return" HorizontalAlignment="Right" Width="100" FontSize="15" Command="{Binding ReturnCommand}" CommandParameter="{Binding ElementName=ThisWindow}" Margin="0,0,0,10"/>
-            <Label Height="40" DockPanel.Dock="Bottom" />
-        </DockPanel>
+        <Grid Grid.Column="1" Grid.Row="1" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Content="List ships that are built after |A|" FontSize="12" Background="AliceBlue" BorderThickness="1" BorderBrush="Silver"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="List hangars storing more than |B| ships" FontSize="12" Background="LightBlue" BorderThickness="1" BorderBrush="Silver"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="List hangars storing less than |C| ships" FontSize="12" Background="AliceBlue" BorderThickness="1" BorderBrush="Silver"/>
+            <Label Grid.Row="3" Grid.Column="0" Content="List owners who are older than |D|" FontSize="12" Background="LightBlue" BorderThickness="1" BorderBrush="Silver"/>
+            <Label Grid.Row="4" Grid.Column="0" Content="List owners who are younger than |E|" FontSize="12" Background="AliceBlue" BorderThickness="1" BorderBrush="Silver"/>
+            <Label Grid.Row="5" Grid.Column="0" Content="List owners who are younger then |F|" FontSize="12" Background="LightBlue"/>
+            <Label Grid.Row="6" Grid.Column="0" Content="and own more ships than |G|" FontSize="12" Background="LightBlue"/>
+            <Label Grid.Row="7" Grid.Column="0" Content="List Report" FontSize="12" Background="AliceBlue" BorderThickness="1" BorderBrush="Silver"/>
+            <DockPanel Grid.Row="0" Grid.Column="1" >
+                <Label Content="  |A|: " Background="AliceBlue" BorderThickness="1" BorderBrush="Silver" Width="40"/>
+                <TextBox x:Name="InputA" VerticalContentAlignment="Center" Text="{Binding InputA}" Background="GhostWhite" BorderThickness="1" BorderBrush="Silver"/>
+            </DockPanel>
+            <DockPanel Grid.Row="1" Grid.Column="1" >
+                <Label Content="  |B|: " Background="LightBlue" BorderThickness="1" BorderBrush="Silver" Width="40"/>
+                <TextBox x:Name="InputB" VerticalContentAlignment="Center" Text="{Binding InputB}" Background="GhostWhite" BorderThickness="1" BorderBrush="Silver"/>
+            </DockPanel>
+            <DockPanel Grid.Row="2" Grid.Column="1" >
+                <Label Content="  |C|: " Background="AliceBlue" BorderThickness="1" BorderBrush="Silver" Width="40"/>
+                <TextBox x:Name="InputC" VerticalContentAlignment="Center" Text="{Binding InputC}" Background="GhostWhite" BorderThickness="1" BorderBrush="Silver"/>
+            </DockPanel>
+            <DockPanel Grid.Row="3" Grid.Column="1" >
+                <Label Content="  |D|: " Background="LightBlue" BorderThickness="1" BorderBrush="Silver" Width="40"/>
+                <TextBox x:Name="InputD" VerticalContentAlignment="Center" Text="{Binding InputD}" Background="GhostWhite" BorderThickness="1" BorderBrush="Silver"/>
+            </DockPanel>
+            <DockPanel Grid.Row="4" Grid.Column="1" >
+                <Label Content="  |E|: " Background="AliceBlue" BorderThickness="1" BorderBrush="Silver" Width="40"/>
+                <TextBox x:Name="InputE" VerticalContentAlignment="Center" Text="{Binding InputE}" Background="GhostWhite" BorderThickness="1" BorderBrush="Silver"/>
+            </DockPanel>
+            <DockPanel Grid.Row="5" Grid.Column="1" >
+                <Label Content="  |F|: " Background="LightBlue" Width="40"/>
+                <TextBox x:Name="InputF" VerticalContentAlignment="Center" Text="{Binding InputF}" Background="GhostWhite"/>
+            </DockPanel>
+            <DockPanel Grid.Row="6" Grid.Column="1" >
+                <Label Content="  |G|: " Background="LightBlue" Width="40"/>
+                <TextBox x:Name="InputG" VerticalContentAlignment="Center" Text="{Binding InputG}" Background="GhostWhite"/>
+            </DockPanel>
+            <Border Grid.Row="5" Grid.RowSpan="2" Grid.Column="0"  BorderBrush="Silver" BorderThickness="1"/>
+            <Border Grid.Row="5"  Grid.Column="1"  BorderBrush="Silver" BorderThickness="1"/>
+            <Border Grid.Row="6"  Grid.Column="1"  BorderBrush="Silver" BorderThickness="1"/>
+            <Button Grid.Row="0" Grid.Column="2" Content="Execute" Command="{Binding ListShipsCommand}" VerticalAlignment="Stretch"/>
+            <Button Grid.Row="1" Grid.Column="2" Content="Execute" Command="{Binding ListHangarsMoreThanCommand}" VerticalAlignment="Stretch"/>
+            <Button Grid.Row="2" Grid.Column="2" Content="Execute" Command="{Binding ListHangarsLessThanCommand}" VerticalAlignment="Stretch"/>
+            <Button Grid.Row="3" Grid.Column="2" Content="Execute" Command="{Binding ListOlderOwnersCommand}" VerticalAlignment="Stretch"/>
+            <Button Grid.Row="4" Grid.Column="2" Content="Execute" Command="{Binding ListYoungerOwnersCommand}" VerticalAlignment="Stretch"/>
+            <Button Grid.Row="5" Grid.Column="2" Grid.RowSpan="2" Content="Execute" Command="{Binding ListComplexOwnersCommand}" VerticalAlignment="Stretch"/>
+            <Button Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Content="Execute" Command="{Binding ReportCommand}" VerticalAlignment="Stretch"/>
+            <DockPanel Grid.Row="8" Grid.ColumnSpan="3">
+                <Label Height="25" Width="100" FontSize="10" DockPanel.Dock="Left" Content="{Binding QueryStatus, StringFormat='Query status: {0}'}" BorderBrush="Silver" BorderThickness="1" Background="AliceBlue"/>
+                <Label Height="5" DockPanel.Dock="Bottom"/>
+                <Button Content="Exit" DockPanel.Dock="Bottom" HorizontalAlignment="Right" Width="100" FontSize="15" Command="{Binding TerminateCommand}" CommandParameter="{Binding ElementName=ThisWindow}"/>
+                <Button DockPanel.Dock="Bottom" Content="Return" HorizontalAlignment="Right" Width="100" FontSize="15" Command="{Binding ReturnCommand}" CommandParameter="{Binding ElementName=ThisWindow}" Margin="0,0,0,10"/>
+                <Label Height="0" DockPanel.Dock="Bottom" />
+                <TextBlock Height="0" DockPanel.Dock="Bottom"/>
+            </DockPanel>
+        </Grid>
     </Grid>
 </Window>

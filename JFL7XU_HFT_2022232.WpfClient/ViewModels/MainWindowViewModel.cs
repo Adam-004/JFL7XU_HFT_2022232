@@ -44,7 +44,7 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
         public void Query(Window window)
         {
             var QueryWindow = new QueryWindow();
-            QueryWindow.DataContext = new QueryWindowViewModel(/*shipService*/);
+            QueryWindow.DataContext = new QueryWindowViewModel();
             QueryWindow.Show();
             window.Close();
         }
