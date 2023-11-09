@@ -23,7 +23,12 @@ namespace JFL7XU_HFT_2022232.Models
         public override string ToString()
         {
             string Out = "";
-            Out += "Owner:\n" + Owner.Name + " " + Owner.Age + " years old, has hangar at " + Hangar.Location + ", named " + Hangar.Name + ".\nOwner's ships:\n";
+            if (Owner is not null)
+            {
+                Out += "Owner:\n" + Owner.Name + " " + Owner.Age + " years old, has hangar at " + Hangar.Location + ", named " + Hangar.Name + ".\nOwner's ships:\n";
+            }
+            else { Out += "Deleted Owner.\nOwner's ships:\n"; }
+            
             int i=0;
             foreach (var ship in ships)
             {
