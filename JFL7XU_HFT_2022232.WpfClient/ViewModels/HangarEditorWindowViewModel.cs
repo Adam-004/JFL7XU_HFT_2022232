@@ -80,7 +80,7 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
         {
             if (!IsInDesignMode)
             {
-                Hangars = new RestCollection<Hangar>("http://localhost:40567/", "Hangar");
+                Hangars = new RestCollection<Hangar>("http://localhost:40567/", "Hangar","hub");
             }
             HangarServ = service;
         }

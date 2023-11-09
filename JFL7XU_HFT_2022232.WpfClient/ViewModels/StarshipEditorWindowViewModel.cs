@@ -81,7 +81,7 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
         {
             if (!IsInDesignMode)
             {
-                Starships = new RestCollection<Starship>("http://localhost:40567/", "Starship");
+                Starships = new RestCollection<Starship>("http://localhost:40567/", "Starship", "hub");
             }
             StarshipServ = service;
         }

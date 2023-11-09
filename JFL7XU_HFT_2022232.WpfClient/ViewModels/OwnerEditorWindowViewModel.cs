@@ -73,7 +73,7 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
         {
             if (!IsInDesignMode)
             {
-                Owners = new RestCollection<Owner>("http://localhost:40567/", "Owner");
+                Owners = new RestCollection<Owner>("http://localhost:40567/", "Owner", "hub");
             }
             OwnerServ = service;
         }
