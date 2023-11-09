@@ -26,7 +26,7 @@ namespace JFL7XU_HFT_2022232.WpfClient.Services.HangarServ
             InitializeComponent();
             Updated = hangar;
             this.Title = $"Updating '{hangar.Name}'";
-            ShowID.Content = Updated.Id.ToString();
+            ShowID.Content = Updated.ID.ToString();
             InputName.Text = Updated.Name.ToString();
             InputLocation.Text = Updated.Location.ToString();
             InputOwnerID.Text = Updated.OwnerID.ToString();

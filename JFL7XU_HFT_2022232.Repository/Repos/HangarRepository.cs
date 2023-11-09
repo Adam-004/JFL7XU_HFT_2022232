@@ -16,11 +16,11 @@ namespace JFL7XU_HFT_2022232.Repository.Repos
         }
         public override Hangar Read(int id)
         {
-            return ctx.Hangars.FirstOrDefault(h => h.Id == id);
+            return ctx.Hangars.FirstOrDefault(h => h.ID == id);
         }
         public override void Update(Hangar item)
         {
-            var old = Read(item.Id);
+            var old = Read(item.ID);
             foreach (var prop in old.GetType().GetProperties())
             {
                 if (prop.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)

@@ -35,7 +35,7 @@ namespace JFL7XU_HFT_2022232.WpfClient.Services.HangarServ
                 ParseOkID = int.TryParse(InputID.Text.ToString(), out int id);
                 if (ParseOkID)
                 {
-                    hangar.Id = id;
+                    hangar.ID = id;
                 }
                 else MessageBox.Show("ID must be a number!");
             }

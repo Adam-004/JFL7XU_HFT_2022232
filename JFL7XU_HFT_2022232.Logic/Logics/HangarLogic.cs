@@ -18,7 +18,7 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
         }
         public void Create(Hangar item)
         {
-            if (repo.Read(item.Id) is not null)
+            if (repo.Read(item.ID) is not null)
             {
                 throw new ArgumentException("ID already exists!");
             }
@@ -56,7 +56,7 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
         }
         public void Update(Hangar item)
         {
-            if (repo.Read(item.Id) is null)
+            if (repo.Read(item.ID) is null)
             {
                 throw new ArgumentException("ID is not valid!");
             }

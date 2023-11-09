@@ -13,7 +13,7 @@ namespace JFL7XU_HFT_2022232.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int ID { get; set; }
         [StringLength(100)]
         public string Name { get; set; }
         [StringLength(100)]
@@ -27,7 +27,7 @@ namespace JFL7XU_HFT_2022232.Models
         }
         public Hangar(int id, string name, string location, int ownerID)
         {
-            Id = id;
+            ID = id;
             Name = name;
             Location = location;
             OwnerID = ownerID;
@@ -35,7 +35,7 @@ namespace JFL7XU_HFT_2022232.Models
 
         public override string ToString()
         {
-            return $"{Id}. {Name}, loacated at {Location}.";
+            return $"{ID}. {Name}, loacated at {Location}.";
         }
     }
 }

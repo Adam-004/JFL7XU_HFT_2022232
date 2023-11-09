@@ -31,15 +31,17 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
                 SetProperty(ref selectedHangar, value);
                 if (tmp != null)
                 {
-                    SelectedID = tmp.Id;
+                    SelectedID = tmp.ID;
                     SelectedName = tmp.Name;
                     SelectedLocation = tmp.Location;
+                    SelectedOwnerID = tmp.OwnerID;
                 }
                 else
                 {
                     SelectedID = null;
                     SelectedName = " ";
                     SelectedLocation = null;
+                    SelectedOwnerID = null;
                 }
                 EditCommand.NotifyCanExecuteChanged();
                 DeleteCommand.NotifyCanExecuteChanged();
@@ -109,7 +111,7 @@ namespace JFL7XU_HFT_2022232.WpfClient.ViewModels
             if (InputID.Text != "")
             {
                 int id = int.Parse(InputID.Text);
-                var queued = Hangars.Where(t => t.Id.Equals(id)).FirstOrDefault();
+                var queued = Hangars.Where(t => t.ID.Equals(id)).FirstOrDefault();
                 if (queued != null) SelectedHangar = queued; else MessageBox.Show("No record on this ID!");
             }
             InputID.Text = null;
