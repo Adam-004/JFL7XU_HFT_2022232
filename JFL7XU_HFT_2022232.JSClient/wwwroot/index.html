@@ -6,8 +6,49 @@
     <link rel=" stylesheet" href="style.css"/>
 </head>
 <body>
-
-
-    <script src="script.js"></script>
+    <h1>Owners</h1>
+    <div id="EditOwnersForm">
+        <table>
+            <tr>
+                <th>Create</th>
+                <th>Update</th>
+            </tr>
+            <tr>
+                <td>
+                    <label>Owner ID:</label>
+                    <input type="text" id="ownerID" /> <br />
+                    <label>Owner Name:</label>
+                    <input type="text" id="ownerName" /> <br />
+                    <label>Owner Age:</label>
+                    <input type="text" id="ownerAge" /> <br />
+                    <button type="button" onclick="create()">Create Owner</button>
+                </td>
+                <td id="Updater" style="display: none">
+                    <label>Owner ID:</label>
+                    <input type="text" style="color: lightgray" id="ownerIDUpdate" readonly/> <br />
+                    <label>Owner Name:</label>
+                    <input type="text" id="ownerNameUpdate" /> <br />
+                    <label>Owner Age:</label>
+                    <input type="text" id="ownerAgeUpdate" /> <br />
+                    <button type="button" onclick="update()">Update Owner</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="OwnerCatalog" />
+        </table>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+        <script src="script.js"></script>
+    </div>
 </body>
 </html>

@@ -1,2 +1,61 @@
-﻿body {
+﻿body{
+    background-color: lightblue;
+}
+h1 {
+    text-align:center;
+}
+#EditOwnersForm {
+    width: 100%;
+    margin-bottom: 20px;
+}
+#EditOwnersForm td {
+    width:50%;
+}
+#EditOwnersForm {
+    display: flex;
+    flex-direction: column;
+}
+#EditOwnersForm label, button, input {
+    margin: 2px;
+    padding: 5px;
+}
+#EditOwnersForm label {
+    width:100px;
+    display: inline-block;
+}
+#EditOwnersForm button{
+    width:99%;
+}
+#EditOwnersForm table {
+    background-color: white;
+}
+#EditOwnersForm label, button {
+    font-weight: bolder;
+}
+
+table th {
+    background-color: black;
+    color: lightcyan;
+}
+table{
+    width: 100%;
+}
+table th,td{
+    border: 1px solid black;
+}
+table {
+    border-collapse: collapse;
+}
+
+#OwnerCatalog th {
+    padding: 2px;
+    text-align: center;
+}
+#OwnerCatalog td {
+    padding: 2px;
+    text-align: center;
+    background-color: white;
+} 
+#OwnerCatalog button {     
+    width:48%
 }
