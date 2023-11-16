@@ -1,0 +1,129 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body{
+    background-color: rgb(255, 255, 255);
+    font-family: 'Roboto', sans-serif;
+}
+h1 {
+    text-align:center;
+}
+h1, h2 {
+    font-weight: 800;
+    text-transform: uppercase;
+}
+form {
+    width: 90%;
+    margin: auto;
+}
+.flexbox {
+    display: flex;
+    justify-content: space-between;
+}
+.flexbox > div {
+    width: 46%;
+    padding: 10px 20px;
+    background-color: #23395bf6;
+}
+
+#EditOwnersForm {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#EditOwnersForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#EditOwnersForm label,
+.title {
+    width:100px;
+    color: #fff;
+}
+
+#EditOwnersForm label, button {
+    font-weight: bolder;
+}
+
+#OwnerCatalog_Header {
+    display: flex;
+    width: 90%;
+    margin: auto;
+}
+
+#OwnerCatalog_Header div {
+    width: 25%;
+    margin: 0 0 0 5px;
+    background-color: #191516;
+    text-align: center;
+    color:#fff;
+    padding: 5px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+#OwnerCatalog_Header div:first-child {
+    margin: 0;
+}
+
+#OwnerCatalog {
+    margin: 5px;
+}
+
+.cancelButton {
+    background-color: #D81E5B;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+}
+
+.inputLabel {
+    display: inline-block;
+}
+
+#OwnerCatalog > div {
+    display: flex;
+    width:91%;
+    margin: auto;
+    background-color: #23395bf6;
+    color: #fff;
+}
+
+#OwnerCatalog > div:nth-child(even) {
+    background-color: #2E4A76;
+}
+
+#OwnerCatalog div > div {
+    width: 25%;
+    text-align: center;
+} 
+
+#OwnerCatalog span {
+    width: 100%;
+    text-align: center;
+} 
+
+.createButton {     
+    background-color: #00B295;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+}
+
+.updateButton {     
+    background-color: #FFD166;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+}
+
+.deleteButton {     
+    background-color: #D81E5B;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+}
+
+.outputText {
+    vertical-align:middle;
+}

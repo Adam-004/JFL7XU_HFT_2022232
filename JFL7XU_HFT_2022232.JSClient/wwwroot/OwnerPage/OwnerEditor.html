@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Owner Editor</title>
+    <link rel=" stylesheet" href="OwnerStyle.css" />
+</head>
+<body>
+    <h1>Owners</h1>
+    <div id="EditOwnersForm">
+        <form>
+            <div class="flexbox">
+                <div>
+                    <h2 class="title">Create</h2>
+                    <div>
+                        <label class="inputLabel">ID:</label>
+                        <input type="text" id="ownerID" /> <br />
+                    </div>
+                    <div>
+                        <label class="inputLabel">Name:</label>
+                        <input type="text" id="ownerName" /> <br />
+                    </div>
+                    <div>
+                        <label class="inputLabel">Age:</label>
+                        <input type="text" id="ownerAge" /> <br />
+                    </div>
+                    <button type="button" onclick="create()" class="createButton">Create</button>
+                </div>
+                <div id="Updater" style="display:none">
+                    <h2 class="title">Update</h2>
+                    <label class="inputLabel">ID:</label>
+                    <span id="ownerIDUpdate"></span> <br />
+                    <label class="inputLabel">Name:</label>
+                    <input type="text" id="ownerNameUpdate" /> <br />
+                    <label class="inputLabel">Age:</label>
+                    <input type="text" id="ownerAgeUpdate" /> <br />
+                    <button type="button" onclick="update()" class="updateButton">Update</button>
+                    <button type="button" onclick="cancelUpdate()" class="cancelButton">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div>
+        <div id="OwnerCatalog_Header">
+            <div>ID</div>
+            <div>Name</div>
+            <div>Age</div>
+            <div>Actions</div>
+        </div>
+
+        <div id="OwnerCatalog">
+            
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="OwnerScript.js"></script>
+</body>
+</html>
