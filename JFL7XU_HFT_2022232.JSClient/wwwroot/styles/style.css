@@ -1,2 +1,28 @@
-﻿body {
+﻿@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+body {
+    background-color: rgb(255, 255, 255);
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    width:75%;
+    text-align: center;
+}
+
+.Controls {
+
+}
+.Controls button {
+    width: 75%;
+    background-color: #23395bf6;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    font-size:larger;
+    vertical-align: central;
+    margin: 2px;
+    height: 90%;
+}
+.deleteButton {
+    
 }
