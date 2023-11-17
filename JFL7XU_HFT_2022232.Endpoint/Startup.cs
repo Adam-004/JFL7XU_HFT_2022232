@@ -69,7 +69,7 @@ namespace JFL7XU_HFT_2022232.Endpoint
                               .AllowCredentials()
                               .AllowAnyMethod()
                               .AllowAnyHeader()
-                              .WithOrigins("http://localhost:22127"));
+                              .WithOrigins("http://localhost:47580"));
 
             app.UseRouting();
 

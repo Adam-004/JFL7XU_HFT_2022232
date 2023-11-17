@@ -52,16 +52,6 @@ async function start() {
         setTimeout(start, 5000);
     }
 }
-/*function display() {
-    ownerCatalogElement.innerHTML = null;
-    owners.forEach(o => {
-        ownerCatalogElement.innerHTML +=
-            "<div><div class='outputText'><span>" + o.id + "</span></div>" +
-            "<div class='outputText'>" + o.name + "</div>" +
-            "<div class='outputText'>" + o.age + "</div>" +
-            "<div class='outputText'><button class='deleteButton' type='button' onclick='remove(" + o.id + ")'>Delete</button><button class='updateButton' type='button' onclick='showUpdate(" + o.id + ")'>Update</button></div></div>"
-    })
-}*/
 function display() {
     ownerCatalogElement.innerHTML = null;
     owners.forEach(o => {
@@ -94,12 +84,13 @@ function remove(id) {
         headers: { 'Content-Type': 'application/json', },
         body: null,
     })
-        .then(response => response)
-        .then(data => {
-            console.log('Success: ', data);
-            getData();
-        })
+    .then(response => response)
+    .then(data => {
+        console.log('Success: ', data);
+        getData();
+    })
         .catch((error) => { console.error('Error:', error) });
+    cancelUpdate();
 }
 function showUpdate(id) {
     var toBeUpdated = owners.find(o => o['id'] == id);
