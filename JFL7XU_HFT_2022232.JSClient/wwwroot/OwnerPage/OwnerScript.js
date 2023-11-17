@@ -4,6 +4,9 @@ const oIdElement = document.getElementById('ownerID');
 const oNameElement = document.getElementById('ownerName');
 const oAgeElement = document.getElementById('ownerAge');
 const ownerCatalogElement = document.getElementById('OwnerCatalog');
+const updatedIdElement= document.getElementById("ownerIDUpdate");
+const updatedNameElement = document.getElementById("ownerNameUpdate");
+const updatedAgeElement = document.getElementById("ownerAgeUpdate");
 
 getData();
 setupSignalR()
@@ -49,7 +52,7 @@ async function start() {
         setTimeout(start, 5000);
     }
 }
-function display() {
+/*function display() {
     ownerCatalogElement.innerHTML = null;
     owners.forEach(o => {
         ownerCatalogElement.innerHTML +=
@@ -57,6 +60,16 @@ function display() {
             "<div class='outputText'>" + o.name + "</div>" +
             "<div class='outputText'>" + o.age + "</div>" +
             "<div class='outputText'><button class='deleteButton' type='button' onclick='remove(" + o.id + ")'>Delete</button><button class='updateButton' type='button' onclick='showUpdate(" + o.id + ")'>Update</button></div></div>"
+    })
+}*/
+function display() {
+    ownerCatalogElement.innerHTML = null;
+    owners.forEach(o => {
+        ownerCatalogElement.innerHTML +=
+            "<div style='vertical.align: middle;' ><div class='outputText'><span>" + o.id + "</span></div>" +
+            "<div class='outputText'>" + o.name + "</div>" +
+            "<div class='outputText'>" + o.age + "</div>" +
+            "<div><button class='deleteButton' type='button' onclick='remove(" + o.id + ")'>Delete</button><button class='updateButton' type='button' onclick='showUpdate(" + o.id + ")'>Update</button></div></div>"
     })
 }
 function create() {
@@ -91,15 +104,15 @@ function remove(id) {
 function showUpdate(id) {
     var toBeUpdated = owners.find(o => o['id'] == id);
     document.getElementById("Updater").style.display = null;
-    document.getElementById("ownerIDUpdate").innerHTML = toBeUpdated.id;
-    document.getElementById("ownerNameUpdate").value = toBeUpdated.name;
-    document.getElementById("ownerAgeUpdate").value = toBeUpdated.age;
+    updatedIdElement.innerHTML = toBeUpdated.id;
+    updatedNameElement.value = toBeUpdated.name;
+    updatedAgeElement.value = toBeUpdated.age;
 }
 function update() {
     document.getElementById("Updater").style.display = "none";
-    let updatedID = Number(document.getElementById("ownerIDUpdate").value);
-    let updatedName = document.getElementById("ownerNameUpdate").value;
-    let updatedAge = Number(document.getElementById("ownerAgeUpdate").value);
+    let updatedID = Number(updatedIdElement.innerHTML);
+    let updatedName = updatedNameElement.value;
+    let updatedAge = Number(updatedAgeElement.value);
     fetch('http://localhost:40567/Owner', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', },
@@ -113,8 +126,8 @@ function update() {
     .catch((error) => { console.error('Error:', error) });
 }
 function cancelUpdate() {
-    document.getElementById("ownerIDUpdate").value = null;
-    document.getElementById("ownerNameUpdate").value = null;
-    document.getElementById("ownerAgeUpdate").value = null;
+    updatedIdElement.innerHTML = null;
+    updatedNameElement.value = null;
+    updatedAgeElement.value = null;
     document.getElementById("Updater").style.display = "none";
 }
