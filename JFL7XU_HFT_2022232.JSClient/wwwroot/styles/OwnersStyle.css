@@ -26,6 +26,7 @@ h1, h2 {
     background-color: #23395bf6;
     padding: 5px 10px;
     color: #fff;
+    font-size: xx-large;
 }
 
 form {
@@ -166,6 +167,7 @@ form {
     vertical-align: central;
     padding-top: 10px;
     padding-bottom: 10px;
+    font-size: medium;
 }
 
 #ownerIDUpdate {

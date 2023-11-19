@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Query</title>
+    <link rel=" stylesheet" href="styles/QueryStyle.css" />
+</head>
+<body>
+    <div id="MainHeader">
+        <button class="otherPage" onclick="window.location.href='OwnersPage.html'">Owners</button>
+        <button class="otherPage" onclick="window.location.href='HangarEditorPage.html'">Hangars</button>
+        <button class="otherPage" onclick="window.location.href='StarshipPage.html'">Starships</button>
+        <button class="otherPage" onclick="window.location.href='INDEXEs.html'">Main Page</button>
+    </div>
+    <h1>Queries</h1>
+    <div id="QueryForm">
+        <form>
+            <div class="flexbox">
+                <div>
+                    <div class="inputLabel">
+                        <div>List ships that are built after |X|:</div>
+                        <button type="button" onclick="query(1)">Execute</button>
+                    </div> <br />
+                    <div class="inputLabel">
+                        <div>List hangars storing more than |X| ships:</div>
+                        <button type="button" onclick="query(2)">Execute</button>
+                    </div> <br />
+                    <div class="inputLabel">
+                        <div>List hangars storing less than |X| ships:</div>
+                        <button type="button" onclick="query(3)">Execute</button>
+                    </div> <br />
+                    <div class="inputLabel">
+                        <div>List owners who are older than |X|:</div>
+                        <button type="button" onclick="query(4)">Execute</button>
+                    </div> <br />
+                    <div class="inputLabel">
+                        <div>List owners who are younger than |X|:</div>
+                        <button type="button" onclick="query(5)">Execute</button>
+                    </div> <br />
+                    <div class="LongQuery">
+                        <div>List owners who are younger than |X| and own more ships than |Y|:</div>
+                        <button type="button" onclick="query(6)">Execute</button>
+                    </div> <br />
+                    <div class="inputLabel">
+                        <div>List Report:</div>
+                        <button type="button" onclick="query(7)">Execute</button>
+                    </div> <br />
+                </div>
+                <div class="Variables">
+                    <div>
+                        <div>X:</div>
+                        <input type="text" id="variableX" />
+                    </div> <br/>
+                    <div>
+                        <div>Y:</div>
+                        <input type="text" id="variableY" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div>
+        <div id="QueryCatalog_Header">
+            <div>Query Box</div>
+        </div>
+        <div id="QueryCatalog">
+            
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="scripts/QueryUsherScript.js"></script>
+</body>
+</html>

@@ -45,33 +45,33 @@ form {
     background-color: #23395bf6;
 }
 
-#EditShipsForm {
+#EditHangarsForm {
     margin-bottom: 20px;
 }
 
-#EditShipsForm {
+#EditHangarsForm {
     display: flex;
     flex-direction: column;
 }
 
-#EditShipsForm label,
+#EditHangarsForm label,
 .title {
     width: 100px;
     color: #fff;
 }
 
-#EditShipsForm label, button {
+#EditHangarsForm label, button {
     font-weight: bolder;
 }
 
-#ShipCatalog_Header {
+#HangarCatalog_Header {
     display: flex;
     width: 91%;
     margin: auto;
 }
 
-#ShipCatalog_Header div {
-    width: 14%;
+#HangarCatalog_Header div {
+    width: 25%;
     margin: 0 0 0 5px;
     background-color: #191516;
     text-align: center;
@@ -81,11 +81,11 @@ form {
     font-weight: 800;
 }
 
-#ShipCatalog_Header div:first-child {
+#HangarCatalog_Header div:first-child {
     margin: 0;
 }
 
-#ShipCatalog {
+#HangarCatalog {
     margin: 5px;
 }
 
@@ -100,7 +100,7 @@ form {
     display: inline-block;
 }
 
-#ShipCatalog > div {
+#HangarCatalog > div {
     display: flex;
     width: 91%;
     margin: auto;
@@ -108,16 +108,16 @@ form {
     color: #fff;
 }
 
-#ShipCatalog > div:nth-child(even) {
+#HangarCatalog > div:nth-child(even) {
     background-color: #2E4A76;
 }
 
-#ShipCatalog div > div {
+#HangarCatalog div > div {
     width: 25%;
     text-align: center;
 }
 
-#ShipCatalog span {
+#HangarCatalog span {
     width: 100%;
     text-align: center;
 }
@@ -169,6 +169,6 @@ form {
     font-size: medium;
 }
 
-#shipIdUpdate {
+#hangarIDUpdate {
     color: powderblue;
 }

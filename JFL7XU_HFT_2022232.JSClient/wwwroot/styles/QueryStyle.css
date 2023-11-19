@@ -1,2 +1,210 @@
-﻿body {
+﻿@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+body {
+    background-color: rgb(255, 255, 255);
+    font-family: 'Roboto', sans-serif;
+}
+button {
+    font-weight:bolder;
+}
+
+h1 {
+    text-align: center;
+}
+
+h1, h2 {
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+#MainHeader {
+    width: 100%;
+    background-color: aliceblue;
+    border: groove;
+}
+
+.otherPage {
+    display: inline-block;
+    margin: 5px 7px;
+    background-color: #23395bf6;
+    padding: 5px 10px;
+    color: #fff;
+    font-size: xx-large;
+}
+
+form {
+    width: 90%;
+    margin: auto;
+}
+
+.flexbox {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flexbox > div {
+    width:100%;
+    padding: 10px 20px;
+    background-color: #23395bf6;
+}
+
+#QueryForm {
+    margin-bottom: 20px;
+}
+
+#QueryCatalog_Header {
+    display: flex;
+    width: 91%;
+    margin: auto;
+}
+
+#QueryCatalog_Header div {
+    width: 100%;
+    margin: 0 0 0 5px;
+    background-color: #191516;
+    text-align: center;
+    color: #fff;
+    padding: 5px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+#QueryCatalog_Header div:first-child {
+    margin: 0;
+}
+
+#QueryCatalog {
+    margin: 5px;
+}
+
+.inputLabel {
+    display: inline-block;
+    font-weight: bolder;
+    color: #fff;
+    vertical-align: middle;
+    margin: 5px 0;
+}
+
+.inputLabel div {
+    display: inline-block;
+    width: 310px;
+    padding: 5px;
+}
+
+.inputLabel input {
+    display: inline-block;
+    width: 30px;
+    margin-right: 50px;
+    padding: 5px;
+}
+
+.inputLabel button {
+    display: inline-block;
+    width: 100px;
+    background-color: #FFD166;
+    color: black;
+    padding: 5px;
+}
+
+.LongQuery {
+    display: inline-block;
+    font-weight: bolder;
+    color: #fff;
+    vertical-align: middle;
+    margin: 5px 0;
+}
+
+.LongQuery div {
+    display: inline-block;
+    width: 310px;
+    padding: 5px;
+}
+
+.LongQuery input {
+    display: inline-block;
+    width: 30px;
+    margin-right: 50px;
+    padding: 5px;
+}
+
+.LongQuery button {
+    display: inline-block;
+    width: 100px;
+    background-color: #FFD166;
+    color: black;
+    padding: 5px;
+}
+
+#QueryCatalog > div {
+    display: flex;
+    width: 91%;
+    margin: auto;
+    background-color: #23395bf6;
+    color: #fff;
+    padding:2px 5px;
+}
+
+#QueryCatalog > div:nth-child(even) {
+    background-color: #2E4A76;
+}
+
+#QueryCatalog div > div {
+    width: 33%;
+    text-align: center;
+}
+
+.outputShipHeader {
+    width: 20%;
+}
+
+.updateButton {
+    background-color: #FFD166;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    width: 49%;
+    vertical-align: central;
+    margin: 0 -5px 0 1px;
+    height: 90%;
+}
+
+.outputText {
+    display: table-cell;
+    vertical-align: central;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: medium;
+}
+
+.Variables {
+    color: #fff;
+    font-size:100px;
+}
+
+.Variables div {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.Variables input {
+    height: 100px;
+    vertical-align: middle;
+    font-size: 80px;
+    width: 250px;
+}
+
+#QueryCatalog div > div:last-child {
+    text-align: left;
+    vertical-align: middle;
+}
+
+#QueryCatalog div > div:nth-child(2) {
+    text-align: center;
+}
+
+#QueryCatalog div > div:first-child {
+    text-align: left;
+}
+
+.outputTextFirst {
+    width: 40%;
 }

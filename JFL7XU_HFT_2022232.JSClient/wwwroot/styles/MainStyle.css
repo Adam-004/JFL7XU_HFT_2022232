@@ -9,20 +9,27 @@ h1 {
     text-align: center;
 }
 
-.Controls {
-
+.Controls div {
+    background-color: black;
+    color: aliceblue;
+    height: 90%;
+    padding: 10px;
+    margin: 2px;
+    border: none;
+    border: none;
+    font-size: larger;
+    vertical-align: central;
+    display: inline-block;
 }
 .Controls button {
+    display: inline-block;
     width: 75%;
     background-color: #23395bf6;
     color: #fff;
     padding: 10px;
     border: none;
-    font-size:larger;
+    font-size: larger;
     vertical-align: central;
     margin: 2px;
     height: 90%;
-}
-.deleteButton {
-    
 }

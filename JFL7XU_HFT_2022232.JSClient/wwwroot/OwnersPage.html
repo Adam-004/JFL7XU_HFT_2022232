@@ -3,13 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <title>Owner Editor</title>
-    <link rel=" stylesheet" href="styles/OwnerStyle.css" />
+    <link rel=" stylesheet" href="styles/OwnersStyle.css" />
 </head>
 <body>
     <div id="MainHeader">
-        <h3 class="otherPage">Startships</h3>
-        <h3 class="otherPage">Hangars</h3>
-        <h3 class="otherPage">Query (Non-Crud)</h3>
+        <button class="otherPage" onclick="window.location.href='HangarEditorPage.html'">Hangars</button>
+        <button class="otherPage" onclick="window.location.href='StarshipPage.html'">Starships</button>
+        <button class="otherPage" onclick="window.location.href='QueryUsherPage.html'">Query (Non-Crud)</button>
+        <button class="otherPage" onclick="window.location.href='INDEXEs.html'">Main Page</button>
     </div>
     <h1>Owners</h1>
     <div id="EditOwnersForm">
@@ -52,13 +53,10 @@
             <div>Age</div>
             <div>Actions</div>
         </div>
-
         <div id="OwnerCatalog">
-            
         </div>
     </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
-    <script src="scripts/OwnerScript.js"></script>
+    <script src="scripts/OwnerPageScript.js"></script>
 </body>
 </html>

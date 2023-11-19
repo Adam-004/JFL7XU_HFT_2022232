@@ -20,7 +20,6 @@ async function getData() {
         });
 }
 function setupSignalR() {
-    //http://localhost:40567/
     connection = new signalR.HubConnectionBuilder()
         .withUrl("http://localhost:40567/hub")
         .configureLogging(signalR.LogLevel.Information)
@@ -76,7 +75,10 @@ function create() {
         console.log('Success: ', data);
         getData();
     })
-    .catch((error) => { console.error('Error:', error) });
+        .catch((error) => { console.error('Error:', error) });
+    oIdElement.value = null;
+    oNameElement.value = null;
+    oAgeElement.value = null;
 }
 function remove(id) {
     fetch('http://localhost:40567/Owner/' + id, {
