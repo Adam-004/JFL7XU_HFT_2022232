@@ -205,7 +205,7 @@ function displayReport() {
     outputStringElement = "";
     queryBox.forEach(q => {
         outputStringElement +=
-            "<div><div class='outputTextFirst'>Owner: " + q.owner.id + ". " + q.owner.name + ", " + q.owner.age + "years old, has hangar at: " + q.hangar.location + " named " + q.hangar.name + ".</div>" +
+            "<div><div class='outputTextFirst'>Owner: " + q.owner.id + ". " + q.owner.name + ", " + q.owner.age + " years old, has hangar at: " + q.hangar.location + " named " + q.hangar.name + ".</div>" +
             "<div class='outputShipHeader'>-Ships owned:</div><div class='outputListingContainer'>";
         q.ships.forEach(s => {
             outputStringElement +=
@@ -215,11 +215,3 @@ function displayReport() {
     })
     queryCatalogElement.innerHTML = outputStringElement;
 }
-/*<div>
-                <div class='outputText'>Owner: 1. Adam, 21 years old, has hangar at: Valahol named Valami.</div>
-                <div class='outputShipHeader'>-Ships owned:</div>
-                <div class='outputListingDiv'>
-                    <label class='outputListing'>-1. name: BélaRöptetõ, type: 1</label><br />
-                    <label class='outputListing'>-2. name: GézaRöptetõ, type: 2</label><br />
-                </div>
-            </div>*/
