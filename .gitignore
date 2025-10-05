@@ -1,0 +1,152 @@
+﻿# =====================================
+# 🟦 Visual Studio & .NET
+# =====================================
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Tt]emp/
+[Tt]est[Rr]esult*/
+AppPackages/
+publish/
+artifacts/
+
+# IIS Express
+.vspscc
+.vsmdi
+*.psess
+*.vsp
+*.vspx
+*.vspscc
+Generated_Code/
+*.dbmdl
+*.bak
+*.ldf
+*.mdf
+
+# ReSharper & Rider
+_ReSharper*/
+*.DotSettings.user
+.idea/
+*.sln.iml
+
+# DotCover
+*.dotCover
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+**/Properties/launchSettings.json
+
+# Entity Framework
+Migrations/obj/
+*.cache
+*.bak
+*.ldb
+*.sqlite
+*.sqlite3
+
+# =====================================
+# 🟨 Node / JavaScript / Frontend
+# =====================================
+node_modules/
+dist/
+build/
+coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment files
+.env
+.env.*.local
+!.env.example
+
+# Frontend frameworks
+.cache/
+.next/
+.nuxt/
+out/
+.svelte-kit/
+storybook-static/
+.DS_Store
+*.tsbuildinfo
+
+# =====================================
+# 🟩 Misc
+# =====================================
+# Logs
+*.log
+logs/
+*.tlog
+*.trace
+*.nlog
+
+# Temporary files
+*.tmp
+*.temp
+*.pid
+*.seed
+*.bak
+*.orig
+*.swp
+*.swo
+
+# Backup files
+*~
+*.bak
+*.old
+
+# OS-generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+__MACOSX/
+
+# =====================================
+# 🟦 Publish outputs
+# =====================================
+wwwroot/dist/
+wwwroot/build/
+wwwroot/node_modules/
+wwwroot/lib/
+wwwroot/vendor/
+
+# =====================================
+# 🟪 Test, Tools & Misc
+# =====================================
+coverage*.json
+test-results/
+.vscode-test/
+.nunit/
+TestResults/
+*.trx
+
+# =====================================
+# 🟧 Secrets
+# =====================================
+secrets.json
+*.pfx
+*.key
+*.pem
+*.crt
+*.pub
+appsettings.*.json
+!appsettings.Development.json
