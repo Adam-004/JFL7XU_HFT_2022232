@@ -375,7 +375,7 @@ namespace JFL7XU_HFT_2022232.Client
             year = int.Parse(Console.ReadLine());
             
             Console.Clear();
-            Console.WriteLine($"Listing Ships which are built after {year}:\n");
+            Console.WriteLine($"Listing ships which are built after {year}:\n");
 
             List<Starship> Out = rest.Get<Starship>("NonCrud/ListShips_WhichBuiltAfter/"+year);
             foreach (var item in Out)
@@ -394,7 +394,7 @@ namespace JFL7XU_HFT_2022232.Client
             quantity = int.Parse(Console.ReadLine());
 
             Console.Clear();
-            Console.WriteLine($"Listing hangars that have more than {quantity} Ships:\n");
+            Console.WriteLine($"Listing hangars that have more than {quantity} ships:\n");
 
             List<Hangar> Out = rest.Get<Hangar>("NonCrud/ListHangars_WithShipsMoreThan/" + quantity);
             foreach (var item in Out)
@@ -413,7 +413,7 @@ namespace JFL7XU_HFT_2022232.Client
             quantity = int.Parse(Console.ReadLine());
 
             Console.Clear();
-            Console.WriteLine($"Listing hangars that have less than {quantity} Ships:\n");
+            Console.WriteLine($"Listing hangars that have less than {quantity} ships:\n");
 
             List<Hangar> Out = rest.Get<Hangar>("NonCrud/ListHangars_WithShipsLessThan/" + quantity);
             foreach (var item in Out)
@@ -473,7 +473,7 @@ namespace JFL7XU_HFT_2022232.Client
             quantity = int.Parse(Console.ReadLine());
 
             Console.Clear();
-            Console.WriteLine($"Listing owners who are younger than {age} and has more Ships than {quantity}:\n");
+            Console.WriteLine($"Listing owners who are younger than {age} and has more ships than {quantity}:\n");
 
             List<Owner> Out = rest.Get<Owner>($"NonCrud/ListOwners_YoungerAndHasMoreShipsThan/{age}/{quantity}");
             foreach (var item in Out)

@@ -3,7 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Net;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace JFL7XU_HFT_2022232.JSClient
 {
@@ -30,14 +33,7 @@ namespace JFL7XU_HFT_2022232.JSClient
                 endpoints.MapGet("/", async context =>
                 {
                     await context.Response.WriteAsync("Hello World!");
-                    //context.Response.Redirect("/MainMenuPage.html");
                 });
-
-                //// Redirect root URL (/) to MainMenuPage.html
-                //endpoints.MapGet("/", context =>
-                //{
-                //    context.Response.Redirect("/MainMenuPage.html");
-                //});
             });
         }
     }

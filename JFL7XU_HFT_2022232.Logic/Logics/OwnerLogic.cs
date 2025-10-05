@@ -3,18 +3,20 @@ using JFL7XU_HFT_2022232.Models;
 using JFL7XU_HFT_2022232.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Metadata;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace JFL7XU_HFT_2022232.Logic.Logics
 {
     public class OwnerLogic : IOwnerLogic
     {
-        private readonly IRepository<Owner> repo;
-
+        IRepository<Owner> repo;
         public OwnerLogic(IRepository<Owner> repo)
         {
             this.repo = repo;
         }
-
         public void Create(Owner item)
         {
             if (repo.Read(item.ID) is not null)
@@ -27,7 +29,6 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
             }
             repo.Create(item);
         }
-
         public void Delete(int id)
         {
             if (repo.Read(id) is null)
@@ -36,7 +37,6 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
             }
             repo.Delete(id);
         }
-
         public Owner Read(int id)
         {
             var owner = repo.Read(id);
@@ -46,22 +46,17 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
             }
             return owner;
         }
-
         public IEnumerable<Owner> ReadAll()
         {
             return repo.ReadAll();
         }
-
         public void Update(Owner item)
         {
-            if (!item.IsUnInitialized())
+            if (repo.Read(item.ID) is null)
             {
-                if (repo.Read(item.ID) is null)
-                {
-                    throw new ArgumentException("ID is not valid!");
-                }
-                repo.Update(item);
+                throw new ArgumentException("ID is not valid!");
             }
+            repo.Update(item);
         }
     }
 }

@@ -14,42 +14,28 @@ namespace JFL7XU_HFT_2022232.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
-
         [StringLength(100)]
         public string Name { get; set; }
-
         public int Age { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<Starship> Ships { get; set; }
-
         [JsonIgnore]
         public virtual Hangar Hangar { get; set; }
+        
+        public Owner()
+        {
 
-
-        public Owner() { }
-
+        }
         public Owner(int id, string name, int age)
         {
             ID = id;
             Name = name;
             Age = age;
         }
-
         public override string ToString()
         {
             return $"{ID}. {Name}, {Age} years old.";
-        }
-
-        public bool IsUnInitialized()
-        {
-            if (ID == 0 &&
-                String.IsNullOrEmpty(Name) &&
-                Age == 0)
-            {
-                return true;
-            }
-            return false;
         }
     }
 }
