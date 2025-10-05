@@ -3,19 +3,18 @@ using JFL7XU_HFT_2022232.Models;
 using JFL7XU_HFT_2022232.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JFL7XU_HFT_2022232.Logic.Logics
 {
     public class StarshipLogic : IStarshipLogic
     {
-        IRepository<Starship> repo;
+        private readonly IRepository<Starship> repo;
+
         public StarshipLogic(IRepository<Starship> repo)
         {
             this.repo = repo;
         }
+
         public void Create(Starship item)
         {
             if (repo.Read(item.ID) is not null)
@@ -28,6 +27,7 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
             }
             repo.Create(item);
         }
+
         public void Delete(int id)
         {
             if (repo.Read(id) is null)
@@ -36,6 +36,7 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
             }
             repo.Delete(id);
         }
+
         public Starship Read(int id)
         {
             var ship = repo.Read(id);
@@ -45,17 +46,22 @@ namespace JFL7XU_HFT_2022232.Logic.Logics
             }
             return ship;
         }
+
         public IEnumerable<Starship> ReadAll()
         {
             return repo.ReadAll();
         }
+
         public void Update(Starship item)
         {
-            if (repo.Read(item.ID) is null)
+            if (!item.IsUnInitialized())
             {
-                throw new ArgumentException("ID is not valid!");
+                if (repo.Read(item.ID) is null)
+                {
+                    throw new ArgumentException("ID is not valid!");
+                }
+                repo.Update(item);
             }
-            repo.Update(item);
         }
     }
 }

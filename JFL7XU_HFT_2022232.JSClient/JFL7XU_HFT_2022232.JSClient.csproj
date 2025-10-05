@@ -5,7 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Trash\" />
+    <Compile Remove="wwwroot\Trash\**" />
+    <Content Remove="wwwroot\Trash\**" />
+    <EmbeddedResource Remove="wwwroot\Trash\**" />
+    <None Remove="wwwroot\Trash\**" />
   </ItemGroup>
 
 </Project>
