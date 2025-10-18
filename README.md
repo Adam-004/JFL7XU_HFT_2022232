@@ -44,11 +44,10 @@ This repository implements a multi‐layered application built in C#/.NET (with 
 
 ---
 
-## 🚀 Getting Started  
+## How to run 
 
 ### Prerequisites  
-- .NET SDK (compatible with your project version)  
-- SQL Server or compatible database (configured in `appsettings.json`)  
+- .NET SDK (compatible with your project version)
 - Visual Studio 2022 or VS Code  
 
 ### Setup & Run  
@@ -56,14 +55,9 @@ This repository implements a multi‐layered application built in C#/.NET (with 
    ```bash
    git clone https://github.com/Adam-004/JFL7XU_HFT_2022232.git
    ```
-2. Set **`JFL7XU_HFT_2022232.Endpoint`** as the startup project.  
-3. Update your database connection string in `appsettings.json`.  
-4. Apply migrations if required:
-   ```bash
-   dotnet ef database update
-   ```
-5. Run the project — the API should launch on `https://localhost:<port>`.  
-6. Access the **Swagger UI** at `https://localhost:<port>/swagger` to explore endpoints.  
+2. Set **`JFL7XU_HFT_2022232.Endpoint`** and **`JFL7XU_HFT_2022232.JSClient`** as the startup project.  
+3. Run the project — the API should launch on `https://localhost:40567`.  
+4. Access the **Swagger UI** at `https://localhost:40567/swagger` to explore endpoints.  
 
 ---
 
@@ -129,7 +123,7 @@ The test suite validates logic-layer correctness and repository integration.
 
 ## Future Work  
 - Update **WPF client** to support JWT token authentication 
-Maybe:
+### Maybe:
 - Improve frontend UI/UX for JS client  
 - Add more validation, pagination, and search features  
 - Delete unused console client
