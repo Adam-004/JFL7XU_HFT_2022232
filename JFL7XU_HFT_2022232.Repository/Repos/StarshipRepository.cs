@@ -16,7 +16,7 @@ namespace JFL7XU_HFT_2022232.Repository.Repos
         }
         public override Starship Read(int id)
         {
-            return ctx.Starships.FirstOrDefault(s => s.ID == id);
+            return (ctx as SpacecraftOwnershipDBContext).Starships.FirstOrDefault(s => s.ID == id);
         }
         public override void Update(Starship item)
         {

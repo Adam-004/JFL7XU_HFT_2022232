@@ -16,7 +16,7 @@ namespace JFL7XU_HFT_2022232.Repository.Repos
         }
         public override Owner Read(int id)
         {
-            return ctx.Owners.FirstOrDefault(o => o.ID == id);
+            return (ctx as SpacecraftOwnershipDBContext).Owners.FirstOrDefault(o => o.ID == id);
         }
         public override void Update(Owner item)
         {

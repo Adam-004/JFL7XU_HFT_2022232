@@ -1,26 +1,22 @@
 ﻿using JFL7XU_HFT_2022232.Endpoint.Services;
 using JFL7XU_HFT_2022232.Logic.Interfaces;
 using JFL7XU_HFT_2022232.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace JFL7XU_HFT_2022232.Endpoint.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     [ApiController]
-    public class StarshipController : ControllerBase
+    public class StarshipController(IStarshipLogic logic, IHubContext<SignalRHub> hub) : ControllerBase
     {
-        IStarshipLogic logic;
-        IHubContext<SignalRHub> hub;
-        public StarshipController(IStarshipLogic logic, IHubContext<SignalRHub> hub)
-        {
-            this.logic = logic;
-            this.hub = hub;
-        }
+        IStarshipLogic logic = logic;
+        IHubContext<SignalRHub> hub = hub;
 
         // GET: api/<OwnerController>
         [HttpGet]

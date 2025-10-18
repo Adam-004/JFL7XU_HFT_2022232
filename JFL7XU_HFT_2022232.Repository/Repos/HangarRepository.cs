@@ -16,7 +16,7 @@ namespace JFL7XU_HFT_2022232.Repository.Repos
         }
         public override Hangar Read(int id)
         {
-            return ctx.Hangars.FirstOrDefault(h => h.ID == id);
+            return (ctx as SpacecraftOwnershipDBContext).Hangars.FirstOrDefault(h => h.ID == id);
         }
         public override void Update(Hangar item)
         {

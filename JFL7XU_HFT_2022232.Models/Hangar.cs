@@ -14,17 +14,19 @@ namespace JFL7XU_HFT_2022232.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
+
         [StringLength(100)]
         public string Name { get; set; }
+
         [StringLength(100)]
         public string Location { get; set; }
+
         public int OwnerID { get; set; }
 
         [JsonIgnore]
         public virtual Owner Owner { get; set; }
-        public Hangar()
-        {
-        }
+
+        public Hangar() { }
         public Hangar(int id, string name, string location, int ownerID)
         {
             ID = id;

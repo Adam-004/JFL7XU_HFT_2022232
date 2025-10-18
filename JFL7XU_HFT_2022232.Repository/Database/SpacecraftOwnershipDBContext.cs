@@ -1,15 +1,11 @@
 ﻿using JFL7XU_HFT_2022232.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JFL7XU_HFT_2022232.Repository.Database
 {
-    public class SpacecraftOwnershipDBContext : DbContext
+    public class SpacecraftOwnershipDBContext : IdentityDbContext<User>
     {
         public DbSet<Owner> Owners { get; set; }
         public DbSet<Starship> Starships { get; set; }
@@ -101,6 +97,8 @@ namespace JFL7XU_HFT_2022232.Repository.Database
                 new Hangar(7,"Rocky's Station","Nevarró",7),
                 new Hangar(8,"Dock 07","Tatuin",8)
             });
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }   

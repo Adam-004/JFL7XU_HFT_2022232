@@ -1,5 +1,6 @@
 ﻿using JFL7XU_HFT_2022232.Repository.Database;
 using JFL7XU_HFT_2022232.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,8 @@ namespace JFL7XU_HFT_2022232.Repository.Repos
 {
     public abstract class GenericRepository<T> : IRepository<T> where T : class
     {
-        protected SpacecraftOwnershipDBContext ctx;
-        public GenericRepository(SpacecraftOwnershipDBContext ctx)
+        protected DbContext ctx;
+        public GenericRepository(DbContext ctx)
         {
             this.ctx = ctx;
         }
@@ -21,11 +22,11 @@ namespace JFL7XU_HFT_2022232.Repository.Repos
             ctx.Set<T>().Add(item);
             ctx.SaveChanges();
         }
-        public IQueryable<T> ReadAll()
+        public virtual IQueryable<T> ReadAll()
         {
             return ctx.Set<T>();
         }
-        public void Delete(int id)
+        public virtual void Delete(int id)
         {
             ctx.Set<T>().Remove(Read(id));
             ctx.SaveChanges();

@@ -9,16 +9,18 @@ namespace JFL7XU_HFT_2022232.Models
 {
     public class OwnershipStatistics
     {
+        public Owner Owner { get; set; }
+
+        public Hangar Hangar { get; set; }
+
+        public IEnumerable<Starship> ships { get; set; }
+
         public OwnershipStatistics(Owner owner, Hangar hangar, IEnumerable<Starship> ships)
         {
             Owner = owner;
             Hangar = hangar;
             this.ships = ships;
         }
-
-        public Owner Owner { get; set; }
-        public Hangar Hangar { get; set; }
-        public IEnumerable<Starship> ships { get; set; }
 
         public override string ToString()
         {
