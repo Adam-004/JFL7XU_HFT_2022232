@@ -1,6 +1,7 @@
 let ships = [];
 let connection = null;
-var toBeUpdated;
+let toBeUpdated = null;
+
 const sIdElement = document.getElementById('shipID');
 const sNameElement = document.getElementById('shipName');
 const sSizeElement = document.getElementById('shipSize');
@@ -17,104 +18,131 @@ const updatedYOMElement = document.getElementById("shipYOMUpdate");
 const updatedTypeElement = document.getElementById("shipTypeUpdate");
 const updatedOIdElement = document.getElementById("shipOIdUpdate");
 
-getData();
-setupSignalR()
-async function getData() {
-    await fetch('http://localhost:40567/Starship')
-        .then(x => x.json())
-        .then(y => {
-            ships = y;
-            console.log(y);
-            display();
-        });
+checkAuthAndFetch();
+setupSignalR();
+
+async function checkAuthAndFetch() {
+    const token = localStorage.getItem("jwtToken");
+    if (!token) return;
+    await getData();
 }
+
+async function getData() {
+    const token = localStorage.getItem("jwtToken");
+    if (!token) return;
+
+    try {
+        const res = await fetch('http://localhost:40567/Starship', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        ships = res.ok ? await res.json() : [];
+        display();
+    } catch (err) {
+        console.error("Error fetching starships:", err);
+    }
+}
+
 function setupSignalR() {
     connection = new signalR.HubConnectionBuilder()
         .withUrl("http://localhost:40567/hub")
         .configureLogging(signalR.LogLevel.Information)
-        .build()
+        .build();
 
-    connection.on("StarshipCreated", (user, message) => {
-        getData();
-    });
-
-    connection.on("StarshipDeleted", (user, message) => {
-        getData();
-    });
-
-    connection.on("StarshipUpdated", (user, message) => {
-        getData();
-    });
+    connection.on("StarshipCreated", () => getData());
+    connection.on("StarshipDeleted", () => getData());
+    connection.on("StarshipUpdated", () => getData());
 
     connection.onclose(async () => {
-        await start();
+        await startSignalR();
     });
-    start();
+
+    startSignalR();
 }
-async function start() {
+
+async function startSignalR() {
     try {
         await connection.start();
         console.log("SignalR Connected");
     } catch (err) {
         console.log(err);
-        setTimeout(start, 5000);
+        setTimeout(startSignalR, 5000);
     }
 }
+
 function display() {
-    shipCatalogElement.innerHTML = null;
-    ships.forEach(h => {
-        shipCatalogElement.innerHTML +=
-        "<div><div class='outputText'><span>" + h.id + "</span></div>" +
-        "<div class='outputText'>" + h.name + "</div>" +
-        "<div class='outputText'>" + h.size + "</div>" +
-        "<div class='outputText'>" + h.yearOfManu + "</div>" +
-        "<div class='outputText'>" + h.type + "</div>" +
-        "<div class='outputText'>" + h.ownerID + "</div>" +
-        "<div><button class='deleteButton' type='button' onclick='remove(" + h.id + ")'>Delete</button><button class='updateButton' type='button' onclick='showUpdate(" + h.id + ")'>Update</button></div></div>"
-    })
+    shipCatalogElement.innerHTML = '';
+    ships.forEach(s => {
+        shipCatalogElement.innerHTML += `
+            <div>
+                <div class="outputText"><span>${s.id}</span></div>
+                <div class="outputText">${s.name}</div>
+                <div class="outputText">${s.size}</div>
+                <div class="outputText">${s.yearOfManu}</div>
+                <div class="outputText">${s.type}</div>
+                <div class="outputText">${s.ownerID}</div>
+                <div>
+                    <button class="deleteButton" type="button" onclick="remove(${s.id})">Delete</button>
+                    <button class="updateButton" type="button" onclick="showUpdate(${s.id})">Update</button>
+                </div>
+            </div>
+        `;
+    });
 }
-function create() {
-    let sId = Number(sIdElement.value);
-    let sName = sNameElement.value;
-    let sSize = Number(sSizeElement.value);
-    let sYOM = Number(sYOMElement.value);
-    let sType = Number(sTypeElement.value);
-    let sOId = Number(sOIdElement.value);
-    fetch('http://localhost:40567/Starship', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', },
-        body: JSON.stringify({ id: sId, name: sName, size: sSize, yearOfManu: sYOM, type: sType, ownerID: sOId })
-    })
-    .then(response => response)
-    .then(data => {
-        console.log('Success: ', data);
+
+async function create() {
+    const token = localStorage.getItem("jwtToken");
+    if (!token) return;
+
+    const sId = Number(sIdElement.value);
+    const sName = sNameElement.value;
+    const sSize = Number(sSizeElement.value);
+    const sYOM = Number(sYOMElement.value);
+    const sType = Number(sTypeElement.value);
+    const sOId = Number(sOIdElement.value);
+
+    try {
+        await fetch('http://localhost:40567/Starship', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ id: sId, name: sName, size: sSize, yearOfManu: sYOM, type: sType, ownerID: sOId })
+        });
+
+        sIdElement.value = '';
+        sNameElement.value = '';
+        sSizeElement.value = '';
+        sYOMElement.value = '';
+        sTypeElement.value = '';
+        sOIdElement.value = '';
         getData();
-    })
-    .catch((error) => { console.error('Error:', error) });
-    sIdElement.value = null;
-    sNameElement.value = null;
-    sSizeElement.value = null;
-    sYOMElement.value = null;
-    sTypeElement.value = null;
-    sOIdElement.value = null;
+    } catch (err) {
+        console.error("Error creating starship:", err);
+    }
 }
-function remove(id) {
-    fetch('http://localhost:40567/Starship/' + id, {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json', },
-        body: null,
-    })
-    .then(response => response)
-    .then(data => {
-        console.log('Success: ', data);
+
+async function remove(id) {
+    const token = localStorage.getItem("jwtToken");
+    if (!token) return;
+
+    try {
+        await fetch(`http://localhost:40567/Starship/${id}`, {
+            method: 'DELETE',
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        cancelUpdate();
         getData();
-    })
-    .catch((error) => { console.error('Error:', error) });
-    cancelUpdate();
+    } catch (err) {
+        console.error("Error deleting starship:", err);
+    }
 }
+
 function showUpdate(id) {
-    toBeUpdated = ships.find(o => o['id'] == id);
-    document.getElementById("Updater").style.display = null;
+    toBeUpdated = ships.find(s => s.id === id);
+    if (!toBeUpdated) return;
+
+    document.getElementById("Updater").style.display = '';
     updatedIdElement.innerHTML = toBeUpdated.id;
     updatedNameElement.value = toBeUpdated.name;
     updatedSizeElement.value = toBeUpdated.size;
@@ -122,28 +150,44 @@ function showUpdate(id) {
     updatedTypeElement.value = toBeUpdated.type;
     updatedOIdElement.value = toBeUpdated.ownerID;
 }
-function update() {
-    document.getElementById("Updater").style.display = "none";
-    fetch('http://localhost:40567/Starship', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json', },
-        body: JSON.stringify({ id: Number(updatedIdElement.innerHTML), name: updatedNameElement.value, size: Number(updatedSizeElement.value), yearOfManu: Number(updatedYOMElement.value), type: Number(updatedTypeElement.value), ownerID: updatedOIdElement.value })
-    })
-        .then(response => response)
-        .then(data => {
-            console.log('Success: ', data);
-            getData();
-        })
-        .catch((error) => { console.error('Error:', error) });
-    toBeUpdated = null;
+
+async function update() {
+    const token = localStorage.getItem("jwtToken");
+    if (!token || !toBeUpdated) return;
+
+    const updatedData = {
+        id: Number(updatedIdElement.innerHTML),
+        name: updatedNameElement.value,
+        size: Number(updatedSizeElement.value),
+        yearOfManu: Number(updatedYOMElement.value),
+        type: Number(updatedTypeElement.value),
+        ownerID: Number(updatedOIdElement.value)
+    };
+
+    try {
+        await fetch('http://localhost:40567/Starship', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(updatedData)
+        });
+
+        cancelUpdate();
+        getData();
+    } catch (err) {
+        console.error("Error updating starship:", err);
+    }
 }
+
 function cancelUpdate() {
-    updatedIdElement.innerHTML = null;
-    updatedNameElement.value = null;
-    updatedSizeElement.value = null;
-    updatedYOMElement.value = null;
-    updatedTypeElement.value = null;
-    updatedOIdElement.value = null;
-    document.getElementById("Updater").style.display = "none";
+    updatedIdElement.innerHTML = '';
+    updatedNameElement.value = '';
+    updatedSizeElement.value = '';
+    updatedYOMElement.value = '';
+    updatedTypeElement.value = '';
+    updatedOIdElement.value = '';
+    document.getElementById("Updater").style.display = 'none';
     toBeUpdated = null;
 }

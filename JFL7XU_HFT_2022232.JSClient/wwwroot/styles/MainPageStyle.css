@@ -16,31 +16,31 @@ h1 {
     margin: auto;
 }
 
-    .Controls div {
-        background-color: black;
-        color: aliceblue;
-        height: 90%;
-        padding: 10px;
-        margin: 2px;
-        border: none;
-        border: none;
-        font-size: larger;
-        vertical-align: central;
-        display: inline-block;
-        width: 16.9%;
-        margin-left: 0.1%;
-    }
+.RecordHolder {
+    background-color: black;
+    color: aliceblue;
+    height: 90%;
+    padding: 10px;
+    margin: 2px;
+    border: none;
+    border: none;
+    font-size: larger;
+    vertical-align: central;
+    display: inline-block;
+    width: 16.9%;
+    margin-left: 0.1%;
+}
 
-    .Controls button {
-        display: inline-block;
-        background-color: #23395bf6;
-        color: #fff;
-        padding: 10px;
-        border: none;
-        font-size: larger;
-        vertical-align: central;
-        height: 90%;
-    }
+.Controls button {
+    display: inline-block;
+    background-color: #23395bf6;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    font-size: larger;
+    vertical-align: central;
+    height: 90%;
+}
 
 .ControlButton {
     width: 80%;
@@ -52,4 +52,13 @@ h1 {
 .QueryButton {
     margin: 50px 2px;
     width: 100%;
+}
+
+.AuthButton {
+    margin: 5px 2px;
+    width: 100%;
+}
+
+.AuthButtons {
+    vertical-align: top;
 }

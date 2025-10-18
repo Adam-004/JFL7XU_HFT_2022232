@@ -1,21 +1,34 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <title>Main Page</title>
-    <link rel=" stylesheet" href="styles/MenuPageStyle.css" />
+    <link rel="stylesheet" href="styles/MainPageStyle.css" />
 </head>
 <body>
     <div class="Controls">
-        <h1>Main Page</h1>
-        <button type="button" class="ControlButton" onclick="window.location.href='OwnerEditorPage.html'">Edit Owners</button>
-        <div id="OwnerDisplay">0 Records</div>
-        <button type="button" class="ControlButton" onclick="window.location.href='StarshipEditorPage.html'">Edit Starship</button>
-        <div id="StarshipDisplay">0 Records</div>
-        <button type="button" class="ControlButton" onclick="window.location.href='HangarEditorPage.html'">Edit Hangar</button>
-        <div id="HangarDisplay">0 Records</div>
+
+        <!-- Buttons that require login -->
+        <div id="LoggedInControls" style="display:none; ">
+            <button type="button" class="ControlButton" onclick="window.location.href='OwnerEditorPage.html'">Edit Owners</button>
+            <div id="OwnerDisplay" class="RecordHolder">0 Records</div>
+
+            <button type="button" class="ControlButton" onclick="window.location.href='StarshipEditorPage.html'">Edit Starship</button>
+            <div id="StarshipDisplay" class="RecordHolder">0 Records</div>
+
+            <button type="button" class="ControlButton" onclick="window.location.href='HangarEditorPage.html'">Edit Hangar</button>
+            <div id="HangarDisplay" class="RecordHolder">0 Records</div>
+        </div>
+
+        <!-- Always visible -->
         <button type="button" class="QueryButton" onclick="window.location.href='QueryMakerPage.html'">Query (Non-Crud)</button>
+
+        <!-- Auth buttons -->
+        <div id="AuthSection" class="AuthButtons">
+            <!-- Filled dynamically -->
+        </div>
     </div>
+
     <script src="scripts/MainPageScript.js"></script>
 </body>
 </html>
