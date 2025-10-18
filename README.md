@@ -97,7 +97,7 @@ The test suite validates logic-layer correctness and repository integration.
 
 ---
 
-## ⚙️ Configuration Summary  
+## Configuration Summary  
 
 | Aspect | Configuration |
 |--------|----------------|
@@ -108,7 +108,7 @@ The test suite validates logic-layer correctness and repository integration.
 
 ---
 
-## 🧱 Project Structure  
+## Project Structure  
 ```
 /JFL7XU_HFT_2022232.sln
 /Models
